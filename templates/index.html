@@ -589,7 +589,26 @@
         // 군집 상세 정보 모달
         function showClusterDetail(cluster, beverageType) {
             const beverageTypeText = beverageType === 'caffeine' ? '카페인 음료' : '논카페인 음료';
-            const characteristics = cluster.characteristics.map(c => `<li>${c}</li>`).join('');
+        let characteristics;
+
+        if (cluster.characteristics.length === 0) {
+            characteristics = `<li style="color:#999;">유의미한 특징을 발견할 수 없었습니다.</li>`;
+        } else {
+            characteristics = cluster.characteristics.map(c => {
+                let color = '';
+
+                if (c.includes("이상")) color = '#ff6b6b';
+                if (c.includes("이하")) color = '#667eea';
+
+                const highlighted = c.replace(
+                    /(\d+(\.\d+)?%)\s*(이상|이하)/g,
+                    `<span style="color:${color}; font-weight:600;">$1 $3</span>`
+                );
+
+                return `<li>${highlighted}</li>`;
+            }).join('');
+        }
+                        
             const representatives = cluster.representative_types.slice(0, 5).map(r =>
                 `<div class="rep-item">▪ ${r.name}: ${r.count}개 (${r.percentage.toFixed(1)}%)</div>`
             ).join('');
@@ -631,7 +650,7 @@
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <div style="width: 30px; height: 3px; background: #667eea; border-top: 3px dashed #667eea;"></div>
-                                <span style="color: #667eea; font-weight: 600;">이 군집 평균</span>
+                                <span style="color: #667eea; font-weight: 600;">군집 평균</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <div style="width: 30px; height: 3px; background: #ff6b6b; border-top: 3px dotted #ff6b6b;"></div>
@@ -661,7 +680,7 @@
             drawFeatureDistributions(cluster, modalId);
         }
 
-        // 영양 성분 분포 차트 그리기sudo rm -rf /usr/local/lib/node_modules/@anthropic-ai/claude-code
+        // 영양 성분 분포 차트 그리기
         async function drawFeatureDistributions(cluster, modalId) {
             const features = Object.keys(cluster.feature_statistics);
 
@@ -701,18 +720,30 @@
                     fillcolor: 'rgba(200, 200, 200, 0.3)',
                     line: { color: 'rgba(150, 150, 150, 0.8)', width: 2 },
                     name: '전체 음료 분포',
-                    hoverinfo: 'skip',
+                    hoverinfo: 'text',
                     showlegend: false
                 };
+        
+                const zCluster = (clusterMean - globalMean) / std;
+                const clusterY = Math.exp(-0.5 * zCluster * zCluster) / (std * Math.sqrt(2 * Math.PI));
+                
+                const zGlobal = (globalMean - globalMean) / std;
+                const globalY = Math.exp(-0.5 * zGlobal * zGlobal) / (std * Math.sqrt(2 * Math.PI));
 
+                const maxDensity = Math.max(...y);
+                const minHeight = maxDensity * 0.2;
+
+                const clusterYVisible = Math.max(clusterY, minHeight);
+                const globalYVisible = Math.max(globalY, minHeight);
+        
                 // 클러스터 평균 위치 표시
                 const clusterTrace = {
                     x: [clusterMean, clusterMean],
-                    y: [0, Math.max(...y)],
+                    y: [0, clusterYVisible],
                     type: 'scatter',
                     mode: 'lines',
-                    line: { color: '#667eea', width: 3, dash: 'dash' },
-                    name: '이 군집 평균',
+                    line: { color: '#667eea', width: 3},
+                    name: '군집 평균',
                     hoverinfo: 'text',
                     hovertext: `군집 평균: ${clusterMean.toFixed(1)}<br>전체 평균: ${globalMean.toFixed(1)}`,
                     showlegend: false
@@ -721,12 +752,13 @@
                 // 전체 평균 위치 표시
                 const globalMeanTrace = {
                     x: [globalMean, globalMean],
-                    y: [0, Math.max(...y)],
+                    y: [0, globalYVisible],
                     type: 'scatter',
                     mode: 'lines',
-                    line: { color: '#ff6b6b', width: 2, dash: 'dot' },
+                    line: { color: '#ff6b6b', width: 3 },
                     name: '전체 평균',
-                    hoverinfo: 'skip',
+                    hoverinfo: 'text',
+                    hovertext: `전체 평균: ${globalMean.toFixed(1)}<br>군집 평균: ${clusterMean.toFixed(1)}`,
                     showlegend: false
                 };
 

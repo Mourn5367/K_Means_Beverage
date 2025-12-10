@@ -2779,3 +2779,1304 @@
 2025-12-10 15:53:09,167 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
 2025-12-10 15:53:09,177 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
 2025-12-10 15:53:09,208 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 16:21:46,508 - __main__ - INFO - ============================================================
+2025-12-10 16:21:46,508 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 16:21:46,509 - __main__ - INFO - ============================================================
+2025-12-10 16:21:46,509 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 16:21:46,509 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 16:21:46,522 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 16:21:46,522 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 16:21:46,527 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 16:21:46,551 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 16:21:46,552 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 16:21:46,552 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 16:21:46,552 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 16:21:46,552 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 16:21:46,553 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 16:21:46,560 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 16:21:46,561 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 16:21:46,572 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 16:21:46,572 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 16:21:46,658 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 16:21:46,658 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 16:21:46,721 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 16:21:46,722 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 16:21:46,765 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 16:21:46,766 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 16:21:46,778 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 16:21:46,778 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 16:21:46,787 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 16:21:46,787 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 16:21:46,794 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 16:21:46,794 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 16:21:46,798 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 16:21:46,819 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 16:21:46,819 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 16:21:46,824 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 16:21:46,834 - __main__ - INFO - ============================================================
+2025-12-10 16:21:46,834 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 16:21:46,834 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 16:21:46,835 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 16:21:46,835 - __main__ - INFO - ============================================================
+2025-12-10 16:21:57,879 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 16:21:57,879 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 16:21:57,880 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 16:21:57,911 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 16:21:57,942 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 16:23:00,185 - app.api.routes.insights - ERROR - 인사이트 조회 실패: '커피'
+2025-12-10 16:23:18,365 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 16:48:00,841 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 16:48:00,841 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 16:48:00,842 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 16:48:00,855 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 16:48:01,467 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 16:48:01,468 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 16:48:01,468 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 16:48:01,490 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 16:48:01,534 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:08:55,424 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 17:08:55,425 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 17:08:55,426 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 17:08:55,454 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 17:08:55,508 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 17:08:56,385 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 17:08:56,385 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 17:08:56,386 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 17:08:56,410 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 17:08:56,449 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 17:09:07,192 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:09:07,192 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:09:07,193 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:09:07,215 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:09:07,249 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:09:09,939 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 17:09:09,941 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:09:09,941 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 17:09:09,965 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 17:09:10,006 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:09:15,083 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:09:15,084 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:09:15,085 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:09:15,113 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:09:15,162 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:09:25,204 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=3
+2025-12-10 17:09:25,205 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 17:09:25,206 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=3
+2025-12-10 17:09:25,221 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=3
+2025-12-10 17:09:25,245 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 17:09:40,605 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=7
+2025-12-10 17:09:40,606 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 17:09:40,607 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=7
+2025-12-10 17:09:40,624 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=7
+2025-12-10 17:09:40,686 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 17:09:42,830 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=5
+2025-12-10 17:09:42,844 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 17:09:42,845 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=5
+2025-12-10 17:09:42,853 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=5
+2025-12-10 17:09:42,894 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 17:09:45,966 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=7
+2025-12-10 17:09:45,967 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 17:09:45,967 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=7
+2025-12-10 17:09:45,973 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=7
+2025-12-10 17:09:46,003 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 17:11:40,434 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:11:40,436 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:11:40,436 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:11:40,461 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:11:40,490 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:12:12,942 - __main__ - INFO - 서버 종료 중...
+2025-12-10 17:12:19,580 - __main__ - INFO - ============================================================
+2025-12-10 17:12:19,580 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 17:12:19,582 - __main__ - INFO - ============================================================
+2025-12-10 17:12:19,582 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 17:12:19,582 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 17:12:19,595 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 17:12:19,595 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 17:12:19,600 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 17:12:19,624 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 17:12:19,625 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 17:12:19,625 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 17:12:19,625 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 17:12:19,625 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 17:12:19,626 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 17:12:19,645 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 17:12:19,645 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 17:12:19,655 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 17:12:19,656 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 17:12:19,667 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 17:12:19,667 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 17:12:19,681 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 17:12:19,681 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 17:12:19,693 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 17:12:19,694 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 17:12:19,705 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 17:12:19,705 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 17:12:19,716 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 17:12:19,717 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 17:12:19,726 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 17:12:19,726 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 17:12:19,730 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 17:12:19,740 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 17:12:19,742 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 17:12:19,746 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 17:12:19,754 - __main__ - INFO - ============================================================
+2025-12-10 17:12:19,754 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 17:12:19,754 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 17:12:19,755 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 17:12:19,755 - __main__ - INFO - ============================================================
+2025-12-10 17:12:21,509 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:12:21,510 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:12:21,511 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:12:21,547 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:12:21,578 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:13:31,710 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:13:31,710 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:13:31,711 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:13:31,733 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:13:31,767 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:13:44,046 - __main__ - INFO - 서버 종료 중...
+2025-12-10 17:13:51,516 - __main__ - INFO - ============================================================
+2025-12-10 17:13:51,517 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 17:13:51,518 - __main__ - INFO - ============================================================
+2025-12-10 17:13:51,518 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 17:13:51,518 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 17:13:51,531 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 17:13:51,531 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 17:13:51,540 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 17:13:51,568 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 17:13:51,568 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 17:13:51,569 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 17:13:51,569 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 17:13:51,569 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 17:13:51,569 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 17:13:51,577 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 17:13:51,577 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 17:13:51,588 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 17:13:51,589 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 17:13:51,601 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 17:13:51,601 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 17:13:51,612 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 17:13:51,613 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 17:13:51,624 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 17:13:51,624 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 17:13:51,634 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 17:13:51,635 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 17:13:51,668 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 17:13:51,671 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 17:13:51,715 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 17:13:51,715 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 17:13:51,733 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 17:13:51,743 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 17:13:51,743 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 17:13:51,750 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 17:13:51,761 - __main__ - INFO - ============================================================
+2025-12-10 17:13:51,761 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 17:13:51,762 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 17:13:51,762 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 17:13:51,762 - __main__ - INFO - ============================================================
+2025-12-10 17:13:56,805 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:13:56,805 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:13:56,806 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:13:56,834 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:13:56,888 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:14:32,549 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:14:32,550 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:14:32,551 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:14:32,574 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:14:32,605 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:15:10,336 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:15:10,337 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:15:10,338 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:15:10,350 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:15:10,387 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:17:49,056 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:17:49,057 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:17:49,057 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:17:49,074 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:17:49,123 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:17:58,568 - __main__ - INFO - 서버 종료 중...
+2025-12-10 17:18:05,792 - __main__ - INFO - ============================================================
+2025-12-10 17:18:05,792 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 17:18:05,793 - __main__ - INFO - ============================================================
+2025-12-10 17:18:05,793 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 17:18:05,793 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 17:18:05,802 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 17:18:05,802 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 17:18:05,808 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 17:18:05,835 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 17:18:05,836 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 17:18:05,836 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 17:18:05,836 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 17:18:05,837 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 17:18:05,837 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 17:18:05,848 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 17:18:05,848 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 17:18:05,862 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 17:18:05,862 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 17:18:05,874 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 17:18:05,874 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 17:18:05,887 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 17:18:05,887 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 17:18:05,897 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 17:18:05,898 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 17:18:05,911 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 17:18:05,911 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 17:18:05,924 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 17:18:05,924 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 17:18:05,942 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 17:18:05,943 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 17:18:05,950 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 17:18:05,968 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 17:18:05,968 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 17:18:05,976 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 17:18:06,000 - __main__ - INFO - ============================================================
+2025-12-10 17:18:06,001 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 17:18:06,001 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 17:18:06,002 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 17:18:06,002 - __main__ - INFO - ============================================================
+2025-12-10 17:18:16,485 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:18:16,486 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:18:16,486 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:18:16,507 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:18:16,544 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:19:02,077 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:19:02,078 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:19:02,078 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:19:02,087 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:19:02,116 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:21:50,839 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:21:50,840 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:21:50,841 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:21:50,862 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:21:50,892 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:23:25,722 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 17:23:25,723 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 17:23:25,723 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 17:23:25,724 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 10.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 10.0}
+2025-12-10 17:23:25,724 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:23:25,724 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:23:25,814 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 17:23:25,815 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:23:25,815 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:23:25,817 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 17:23:34,576 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 17:23:34,576 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 17:23:34,576 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 17:23:34,577 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 20.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 10.0}
+2025-12-10 17:23:34,577 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:23:34,577 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:23:34,578 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 2
+2025-12-10 17:23:34,578 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:23:34,579 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:23:34,580 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 17:23:44,695 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 17:23:44,695 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 17:23:44,696 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 17:23:44,696 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 20.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 5.0}
+2025-12-10 17:23:44,697 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:23:44,698 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:23:44,700 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 2
+2025-12-10 17:23:44,700 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:23:44,701 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:23:44,702 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 17:24:36,143 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:24:36,144 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:24:36,144 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:24:36,158 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:24:36,208 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:25:05,804 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=3
+2025-12-10 17:25:05,805 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 17:25:05,805 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=3
+2025-12-10 17:25:05,815 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=3
+2025-12-10 17:25:05,897 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 17:25:09,659 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:25:09,659 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:25:09,660 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:25:09,675 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:25:09,731 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:25:12,580 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 17:25:12,581 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 17:25:12,581 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 17:25:12,592 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 17:25:12,627 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 17:25:14,222 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 17:25:14,222 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:25:14,222 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 17:25:14,237 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 17:25:14,270 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:25:16,288 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=9
+2025-12-10 17:25:16,288 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 17:25:16,288 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=9
+2025-12-10 17:25:16,303 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=9
+2025-12-10 17:25:16,338 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 17:25:17,952 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 17:25:17,952 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 17:25:17,952 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 17:25:17,962 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 17:25:17,994 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 17:25:20,056 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 17:25:20,057 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 17:25:20,057 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 17:25:20,066 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 17:25:20,108 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 17:26:36,809 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 17:26:36,809 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 17:26:36,809 - app.api.routes.prediction - INFO -   - k: 5
+2025-12-10 17:26:36,810 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 100.0, '단백질(g)': 0.0, '당류(g)': 50.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 10.0}
+2025-12-10 17:26:36,810 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 17:26:36,811 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:26:36,812 - app.services.prediction_service - INFO - 예측 완료: caffeine k=5 -> cluster 3
+2025-12-10 17:26:36,812 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 17:26:36,813 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 17:26:36,818 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 17:30:02,852 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 17:30:02,853 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:30:02,853 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 17:30:02,867 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 17:30:02,896 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 17:30:07,257 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 17:30:07,258 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:30:07,258 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 17:30:07,277 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 17:30:07,324 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:31:19,615 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 17:31:19,615 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:31:19,616 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 17:31:19,636 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 17:31:19,669 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:31:20,089 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 17:31:20,090 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 17:31:20,090 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 17:31:20,120 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 17:31:20,153 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 18:25:14,204 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:25:14,205 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:25:14,205 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:25:14,215 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:25:14,259 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:25:15,223 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:25:15,224 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:25:15,225 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:25:15,247 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:25:15,291 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:25:46,633 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=3
+2025-12-10 18:25:46,634 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 18:25:46,634 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=3
+2025-12-10 18:25:46,642 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=3
+2025-12-10 18:25:46,727 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 18:25:50,984 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:25:50,984 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:25:50,986 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:25:50,996 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:25:51,053 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:25:53,228 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 18:25:53,229 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:25:53,229 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 18:25:53,239 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 18:25:53,275 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:25:55,005 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 18:25:55,006 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 18:25:55,007 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 18:25:55,021 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 18:25:55,052 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 18:25:56,356 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=9
+2025-12-10 18:25:56,357 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 18:25:56,357 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=9
+2025-12-10 18:25:56,369 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=9
+2025-12-10 18:25:56,403 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 18:25:57,501 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 18:25:57,501 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 18:25:57,501 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 18:25:57,526 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 18:25:57,554 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 18:26:42,431 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 18:26:42,431 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 18:26:42,431 - app.api.routes.prediction - INFO -   - k: 11
+2025-12-10 18:26:42,432 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 11.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 111.0}
+2025-12-10 18:26:42,432 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 18:26:42,433 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 18:26:42,434 - app.services.prediction_service - INFO - 예측 완료: caffeine k=11 -> cluster 0
+2025-12-10 18:26:42,434 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 18:26:42,434 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 18:26:42,437 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 18:29:41,115 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:29:41,116 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:29:41,117 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:29:41,145 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:29:41,195 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:30:23,945 - __main__ - INFO - 서버 종료 중...
+2025-12-10 18:30:33,874 - __main__ - INFO - ============================================================
+2025-12-10 18:30:33,874 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 18:30:33,875 - __main__ - INFO - ============================================================
+2025-12-10 18:30:33,875 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 18:30:33,876 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 18:30:33,881 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 18:30:33,882 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 18:30:33,900 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 18:30:33,931 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 18:30:33,932 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 18:30:33,932 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 18:30:33,932 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 18:30:33,932 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 18:30:33,933 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 18:30:33,940 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 18:30:33,941 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 18:30:33,950 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 18:30:33,951 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 18:30:33,974 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 18:30:33,974 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 18:30:34,004 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 18:30:34,005 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 18:30:34,033 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 18:30:34,034 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 18:30:34,048 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 18:30:34,049 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 18:30:34,068 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 18:30:34,068 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 18:30:34,078 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 18:30:34,078 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 18:30:34,082 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 18:30:34,089 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 18:30:34,089 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 18:30:34,092 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 18:30:34,100 - __main__ - INFO - ============================================================
+2025-12-10 18:30:34,100 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 18:30:34,100 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 18:30:34,100 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 18:30:34,100 - __main__ - INFO - ============================================================
+2025-12-10 18:30:35,217 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:30:35,218 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:30:35,218 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:30:35,251 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:30:35,296 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:44:36,468 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:44:36,469 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:44:36,470 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:44:36,488 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:44:36,515 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:44:47,452 - __main__ - INFO - ============================================================
+2025-12-10 18:44:47,453 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 18:44:47,453 - __main__ - INFO - ============================================================
+2025-12-10 18:44:47,453 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 18:44:47,453 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 18:44:47,476 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 18:44:47,476 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 18:44:47,483 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 18:44:47,516 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 18:44:47,517 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 18:44:47,517 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 18:44:47,517 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 18:44:47,517 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 18:44:47,517 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 18:44:47,530 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 18:44:47,530 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 18:44:47,541 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 18:44:47,541 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 18:44:47,603 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 18:44:47,604 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 18:44:47,642 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 18:44:47,643 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 18:44:47,685 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 18:44:47,685 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 18:44:47,692 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 18:44:47,692 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 18:44:47,701 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 18:44:47,701 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 18:44:47,708 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 18:44:47,709 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 18:44:47,713 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 18:44:47,747 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 18:44:47,747 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 18:44:47,750 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 18:44:47,758 - __main__ - INFO - ============================================================
+2025-12-10 18:44:47,758 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 18:44:47,758 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 18:44:47,758 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 18:44:47,758 - __main__ - INFO - ============================================================
+2025-12-10 18:45:03,575 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:45:03,575 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:45:03,575 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:45:03,596 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:45:03,649 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:47:32,351 - __main__ - INFO - 서버 종료 중...
+2025-12-10 18:47:40,710 - __main__ - INFO - ============================================================
+2025-12-10 18:47:40,711 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 18:47:40,711 - __main__ - INFO - ============================================================
+2025-12-10 18:47:40,711 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 18:47:40,711 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 18:47:40,719 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 18:47:40,720 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 18:47:40,724 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 18:47:40,745 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 18:47:40,745 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 18:47:40,745 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 18:47:40,746 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 18:47:40,746 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 18:47:40,746 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 18:47:40,754 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 18:47:40,754 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 18:47:40,764 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 18:47:40,764 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 18:47:40,773 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 18:47:40,774 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 18:47:40,784 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 18:47:40,784 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 18:47:40,793 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 18:47:40,794 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 18:47:40,803 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 18:47:40,803 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 18:47:40,811 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 18:47:40,811 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 18:47:40,821 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 18:47:40,821 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 18:47:40,824 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 18:47:40,834 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 18:47:40,834 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 18:47:40,838 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 18:47:40,846 - __main__ - INFO - ============================================================
+2025-12-10 18:47:40,846 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 18:47:40,846 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 18:47:40,846 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 18:47:40,846 - __main__ - INFO - ============================================================
+2025-12-10 18:47:50,270 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:47:50,270 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:47:50,271 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:47:50,289 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:47:50,318 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:50:01,328 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:50:01,329 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:50:01,330 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:50:01,343 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:50:01,386 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:52:06,647 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=3
+2025-12-10 18:52:06,647 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 18:52:06,647 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=3
+2025-12-10 18:52:06,659 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=3
+2025-12-10 18:52:06,684 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 18:52:11,379 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:52:11,380 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:52:11,380 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:52:11,389 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:52:11,417 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:52:13,162 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 18:52:13,162 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:52:13,162 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 18:52:13,171 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 18:52:13,211 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:52:14,497 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 18:52:14,498 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 18:52:14,499 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 18:52:14,526 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 18:52:14,561 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 18:52:15,843 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=9
+2025-12-10 18:52:15,844 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 18:52:15,844 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=9
+2025-12-10 18:52:15,859 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=9
+2025-12-10 18:52:15,908 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 18:52:17,345 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 18:52:17,346 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 18:52:17,346 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 18:52:17,358 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 18:52:17,395 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 18:52:18,428 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 18:52:18,429 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:52:18,429 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 18:52:18,448 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 18:52:18,484 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:54:38,237 - __main__ - INFO - 서버 종료 중...
+2025-12-10 18:54:44,986 - __main__ - INFO - ============================================================
+2025-12-10 18:54:44,987 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 18:54:44,987 - __main__ - INFO - ============================================================
+2025-12-10 18:54:44,987 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 18:54:44,987 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 18:54:44,993 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 18:54:44,993 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 18:54:44,998 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 18:54:45,019 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 18:54:45,019 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 18:54:45,019 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 18:54:45,020 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 18:54:45,020 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 18:54:45,020 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 18:54:45,027 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 18:54:45,027 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 18:54:45,038 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 18:54:45,038 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 18:54:45,046 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 18:54:45,046 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 18:54:45,056 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 18:54:45,056 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 18:54:45,066 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 18:54:45,066 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 18:54:45,074 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 18:54:45,074 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 18:54:45,082 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 18:54:45,083 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 18:54:45,090 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 18:54:45,090 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 18:54:45,094 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 18:54:45,101 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 18:54:45,101 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 18:54:45,106 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 18:54:45,112 - __main__ - INFO - ============================================================
+2025-12-10 18:54:45,113 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 18:54:45,113 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 18:54:45,114 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 18:54:45,114 - __main__ - INFO - ============================================================
+2025-12-10 18:54:56,861 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:54:56,862 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:54:56,862 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:54:56,885 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:54:56,920 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:54:58,554 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 18:54:58,555 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:54:58,555 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 18:54:58,564 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 18:54:58,592 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 18:55:27,942 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 18:55:27,942 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 18:55:27,942 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 18:55:27,955 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 18:55:28,001 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:03:02,248 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:03:02,249 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:03:02,249 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:03:02,264 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:03:02,315 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:04:32,808 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 19:04:32,808 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 19:04:32,808 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 19:04:32,819 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 19:04:32,853 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 19:05:01,483 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:05:01,484 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:05:01,484 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:05:01,501 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:05:01,538 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:05:53,830 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:05:53,830 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:05:53,831 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:05:53,851 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:05:53,933 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:05:55,484 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:05:55,484 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:05:55,484 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:05:55,500 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:05:55,532 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:06:33,490 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:06:33,496 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:06:33,499 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:06:33,516 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:06:33,597 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:06:34,540 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:06:34,555 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:06:34,564 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:06:34,589 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:06:34,669 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:06:53,226 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:06:53,227 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:06:53,227 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:06:53,239 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:06:53,273 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:06:55,699 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:06:55,700 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:06:55,700 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:06:55,717 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:06:55,754 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:08:15,510 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:08:15,510 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:08:15,511 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:08:15,528 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:08:15,560 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:08:19,300 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:08:19,300 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:08:19,300 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:08:19,310 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:08:19,349 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:10:05,187 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:10:05,187 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:10:05,188 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:10:05,204 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:10:05,239 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:10:17,861 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 19:10:17,862 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 19:10:17,862 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 19:10:17,890 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 19:10:17,933 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 19:10:20,405 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:10:20,406 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:10:20,407 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:10:20,440 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:10:20,508 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:10:41,432 - __main__ - INFO - ============================================================
+2025-12-10 19:10:41,433 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:10:41,434 - __main__ - INFO - ============================================================
+2025-12-10 19:10:41,434 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:10:41,434 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:10:41,448 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:10:41,449 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:10:41,458 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:10:41,482 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:10:41,483 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:10:41,483 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:10:41,483 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:10:41,483 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:10:41,484 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:10:41,492 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:10:41,492 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:10:41,500 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:10:41,501 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:10:41,509 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:10:41,509 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:10:41,517 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:10:41,517 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:10:41,525 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:10:41,525 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:10:41,532 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:10:41,532 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:10:41,539 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:10:41,540 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:10:41,547 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:10:41,547 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:10:41,551 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:10:41,559 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:10:41,559 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:10:41,562 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:10:41,569 - __main__ - INFO - ============================================================
+2025-12-10 19:10:41,570 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:10:41,570 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:10:41,570 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:10:41,570 - __main__ - INFO - ============================================================
+2025-12-10 19:10:46,127 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:10:46,128 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:10:46,128 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:10:46,148 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:10:46,193 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:10:59,148 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:10:59,148 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:10:59,148 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:10:59,160 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:10:59,212 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:20:14,852 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:20:14,853 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:20:14,854 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:20:14,868 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:20:14,915 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:20:24,536 - __main__ - INFO - 서버 종료 중...
+2025-12-10 19:20:31,652 - __main__ - INFO - ============================================================
+2025-12-10 19:20:31,653 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:20:31,653 - __main__ - INFO - ============================================================
+2025-12-10 19:20:31,653 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:20:31,653 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:20:31,659 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:20:31,660 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:20:31,664 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:20:31,686 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:20:31,687 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:20:31,687 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:20:31,687 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:20:31,687 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:20:31,688 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:20:31,696 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:20:31,696 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:20:31,706 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:20:31,707 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:20:31,716 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:20:31,716 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:20:31,725 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:20:31,725 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:20:31,735 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:20:31,735 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:20:31,743 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:20:31,743 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:20:31,753 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:20:31,753 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:20:31,762 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:20:31,762 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:20:31,767 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:20:31,775 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:20:31,776 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:20:31,779 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:20:31,788 - __main__ - INFO - ============================================================
+2025-12-10 19:20:31,789 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:20:31,789 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:20:31,789 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:20:31,789 - __main__ - INFO - ============================================================
+2025-12-10 19:20:32,919 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:20:32,919 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:20:32,920 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:20:32,941 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:20:32,982 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:20:36,838 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:20:36,838 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:20:36,839 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:20:36,864 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:20:36,921 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:23:25,184 - __main__ - INFO - 서버 종료 중...
+2025-12-10 19:23:46,052 - __main__ - INFO - ============================================================
+2025-12-10 19:23:46,052 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:23:46,052 - __main__ - INFO - ============================================================
+2025-12-10 19:23:46,053 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:23:46,053 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:23:46,059 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:23:46,059 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:23:46,063 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:23:46,164 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:23:46,164 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:23:46,165 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:23:46,165 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:23:46,165 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:23:46,165 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:23:46,187 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:23:46,187 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:23:46,197 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:23:46,197 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:23:46,208 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:23:46,208 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:23:46,216 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:23:46,216 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:23:46,227 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:23:46,227 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:23:46,236 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:23:46,236 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:23:46,245 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:23:46,246 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:23:46,255 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:23:46,256 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:23:46,260 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:23:46,269 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:23:46,269 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:23:46,274 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:23:46,282 - __main__ - INFO - ============================================================
+2025-12-10 19:23:46,282 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:23:46,282 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:23:46,282 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:23:46,283 - __main__ - INFO - ============================================================
+2025-12-10 19:24:05,468 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:24:05,469 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:24:05,469 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:24:05,488 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:24:05,520 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:24:06,423 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:24:06,424 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:24:06,424 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:24:06,450 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:24:06,485 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:25:02,430 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:25:02,430 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:25:02,432 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:25:02,449 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:25:02,480 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:25:24,048 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:25:24,049 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:25:24,049 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:25:24,064 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:25:24,094 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:25:27,572 - __main__ - INFO - 서버 종료 중...
+2025-12-10 19:25:39,637 - __main__ - INFO - ============================================================
+2025-12-10 19:25:39,638 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:25:39,638 - __main__ - INFO - ============================================================
+2025-12-10 19:25:39,638 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:25:39,639 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:25:39,648 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:25:39,650 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:25:39,654 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:25:39,675 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:25:39,675 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:25:39,675 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:25:39,676 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:25:39,676 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:25:39,676 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:25:39,684 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:25:39,684 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:25:39,695 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:25:39,695 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:25:39,704 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:25:39,705 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:25:39,713 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:25:39,713 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:25:39,724 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:25:39,725 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:25:39,734 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:25:39,734 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:25:39,742 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:25:39,742 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:25:39,752 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:25:39,753 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:25:39,756 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:25:39,765 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:25:39,765 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:25:39,770 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:25:39,779 - __main__ - INFO - ============================================================
+2025-12-10 19:25:39,780 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:25:39,780 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:25:39,780 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:25:39,780 - __main__ - INFO - ============================================================
+2025-12-10 19:25:40,731 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:25:40,732 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:25:40,733 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:25:40,753 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:25:40,805 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:25:58,355 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:25:58,355 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:25:58,356 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:25:58,366 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:25:58,408 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:28:20,909 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:28:20,910 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:28:20,911 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:28:20,925 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:28:20,974 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:28:24,012 - __main__ - INFO - 서버 종료 중...
+2025-12-10 19:28:30,873 - __main__ - INFO - ============================================================
+2025-12-10 19:28:30,873 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:28:30,873 - __main__ - INFO - ============================================================
+2025-12-10 19:28:30,873 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:28:30,874 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:28:30,880 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:28:30,880 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:28:30,884 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:28:30,904 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:28:30,904 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:28:30,904 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:28:30,904 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:28:30,904 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:28:30,906 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:28:30,913 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:28:30,913 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:28:30,921 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:28:30,921 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:28:30,931 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:28:30,932 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:28:30,940 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:28:30,941 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:28:30,949 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:28:30,950 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:28:30,958 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:28:30,960 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:28:30,967 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:28:30,969 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:28:30,976 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:28:30,976 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:28:30,981 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:28:30,988 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:28:30,988 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:28:30,992 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:28:31,001 - __main__ - INFO - ============================================================
+2025-12-10 19:28:31,001 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:28:31,002 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:28:31,002 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:28:31,002 - __main__ - INFO - ============================================================
+2025-12-10 19:28:32,125 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:28:32,132 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:28:32,133 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:28:32,146 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:28:32,189 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:28:35,377 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:28:35,378 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:28:35,378 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:28:35,393 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:28:35,426 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:28:36,496 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:28:36,496 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:28:36,497 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:28:36,504 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:28:36,545 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:31:31,165 - __main__ - INFO - 서버 종료 중...
+2025-12-10 19:31:37,901 - __main__ - INFO - ============================================================
+2025-12-10 19:31:37,902 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:31:37,902 - __main__ - INFO - ============================================================
+2025-12-10 19:31:37,902 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:31:37,903 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:31:37,915 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:31:37,915 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:31:37,921 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:31:37,945 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:31:37,945 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:31:37,945 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:31:37,945 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:31:37,946 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:31:37,946 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:31:37,954 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:31:37,954 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:31:37,963 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:31:37,963 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:31:37,970 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:31:37,970 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:31:37,977 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:31:37,978 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:31:37,985 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:31:37,985 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:31:37,992 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:31:37,992 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:31:38,000 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:31:38,000 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:31:38,008 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:31:38,009 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:31:38,011 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:31:38,018 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:31:38,019 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:31:38,023 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:31:38,030 - __main__ - INFO - ============================================================
+2025-12-10 19:31:38,030 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:31:38,031 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:31:38,031 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:31:38,031 - __main__ - INFO - ============================================================
+2025-12-10 19:31:48,886 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:31:48,887 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:31:48,887 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:31:48,912 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:31:48,950 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:31:48,964 - app.api.routes.insights - ERROR - 인사이트 조회 실패: local variable 'diff_pct' referenced before assignment
+2025-12-10 19:31:52,160 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:31:52,160 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:31:52,160 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:31:52,170 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:31:52,199 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:31:52,213 - app.api.routes.insights - ERROR - 인사이트 조회 실패: local variable 'diff_pct' referenced before assignment
+2025-12-10 19:31:52,583 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:31:52,583 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:31:52,583 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:31:52,601 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:31:52,632 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:31:52,647 - app.api.routes.insights - ERROR - 인사이트 조회 실패: local variable 'diff_pct' referenced before assignment
+2025-12-10 19:31:54,603 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:31:54,603 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:31:54,605 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:31:54,630 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:31:54,658 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:31:54,677 - app.api.routes.insights - ERROR - 인사이트 조회 실패: local variable 'diff_pct' referenced before assignment
+2025-12-10 19:32:05,564 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:32:05,565 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:32:05,565 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:32:05,576 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:32:05,609 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:32:05,629 - app.api.routes.insights - ERROR - 인사이트 조회 실패: local variable 'diff_pct' referenced before assignment
+2025-12-10 19:32:09,469 - __main__ - INFO - 서버 종료 중...
+2025-12-10 19:32:16,711 - __main__ - INFO - ============================================================
+2025-12-10 19:32:16,712 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:32:16,712 - __main__ - INFO - ============================================================
+2025-12-10 19:32:16,712 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:32:16,712 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:32:16,719 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:32:16,720 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:32:16,724 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:32:16,748 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:32:16,749 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:32:16,749 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:32:16,749 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:32:16,749 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:32:16,749 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:32:16,757 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:32:16,758 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:32:16,766 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:32:16,766 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:32:16,776 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:32:16,776 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:32:16,786 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:32:16,787 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:32:16,799 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:32:16,801 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:32:16,816 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:32:16,816 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:32:16,826 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:32:16,826 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:32:16,834 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:32:16,834 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:32:16,841 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:32:16,850 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:32:16,850 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:32:16,855 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:32:16,865 - __main__ - INFO - ============================================================
+2025-12-10 19:32:16,865 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:32:16,865 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:32:16,866 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:32:16,866 - __main__ - INFO - ============================================================
+2025-12-10 19:32:17,845 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:32:17,846 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:32:17,846 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:32:17,867 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:32:17,901 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:32:37,671 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:32:37,671 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:32:37,673 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:32:37,681 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:32:37,715 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:32:53,134 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=9
+2025-12-10 19:32:53,135 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 19:32:53,137 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=9
+2025-12-10 19:32:53,163 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=9
+2025-12-10 19:32:53,203 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 19:34:21,911 - __main__ - INFO - ============================================================
+2025-12-10 19:34:21,912 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:34:21,912 - __main__ - INFO - ============================================================
+2025-12-10 19:34:21,912 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:34:21,913 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:34:21,924 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:34:21,925 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:34:21,930 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:34:22,051 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:34:22,052 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:34:22,052 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:34:22,053 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:34:22,053 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:34:22,070 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:34:22,087 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:34:22,087 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:34:22,105 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:34:22,105 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:34:22,122 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:34:22,122 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:34:22,140 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:34:22,141 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:34:22,158 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:34:22,158 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:34:22,174 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:34:22,175 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:34:22,193 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:34:22,194 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:34:22,209 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:34:22,209 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:34:22,215 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:34:22,230 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:34:22,230 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:34:22,236 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:34:22,249 - __main__ - INFO - ============================================================
+2025-12-10 19:34:22,250 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:34:22,250 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:34:22,250 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:34:22,251 - __main__ - INFO - ============================================================
+2025-12-10 19:34:25,859 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:34:25,859 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:34:25,860 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:34:25,884 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:34:25,911 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:35:12,924 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:35:12,924 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:35:12,925 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:35:12,963 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:35:13,142 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:35:27,821 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 19:35:27,822 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 19:35:27,822 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 19:35:27,852 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 19:35:27,882 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 19:35:52,963 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:35:52,963 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:35:52,964 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:35:52,992 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:35:53,089 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:36:06,899 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:36:06,900 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:36:06,901 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:36:06,934 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:36:06,964 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:38:39,609 - __main__ - INFO - ============================================================
+2025-12-10 19:38:39,609 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:38:39,609 - __main__ - INFO - ============================================================
+2025-12-10 19:38:39,609 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:38:39,609 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:38:39,616 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:38:39,616 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:38:39,619 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:38:39,643 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:38:39,643 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:38:39,643 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:38:39,644 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:38:39,644 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:38:39,645 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:38:39,656 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:38:39,656 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:38:39,666 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:38:39,667 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:38:39,676 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:38:39,677 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:38:39,685 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:38:39,686 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:38:39,695 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:38:39,695 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:38:39,703 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:38:39,704 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:38:39,710 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:38:39,711 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:38:39,720 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:38:39,720 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:38:39,725 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:38:39,733 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:38:39,734 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:38:39,736 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:38:39,745 - __main__ - INFO - ============================================================
+2025-12-10 19:38:39,745 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:38:39,745 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:38:39,745 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:38:39,745 - __main__ - INFO - ============================================================
+2025-12-10 19:38:43,294 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:38:43,295 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:38:43,295 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:38:43,321 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:38:43,354 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:39:02,599 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:39:02,600 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:39:02,600 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:39:02,616 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:39:02,667 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:39:11,997 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:39:11,997 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:39:12,005 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:39:12,015 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:39:12,062 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:39:20,060 - __main__ - INFO - ============================================================
+2025-12-10 19:39:20,061 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 19:39:20,061 - __main__ - INFO - ============================================================
+2025-12-10 19:39:20,062 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 19:39:20,062 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 19:39:20,074 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 19:39:20,075 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 19:39:20,081 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 19:39:20,109 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 19:39:20,109 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 19:39:20,109 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 19:39:20,110 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 19:39:20,110 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 19:39:20,110 - app.services.model_cache - INFO - 모델 사전 로드 시작: [3, 5, 7, 9, 11]
+2025-12-10 19:39:20,118 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 19:39:20,118 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 19:39:20,126 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 19:39:20,127 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 19:39:20,135 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 19:39:20,135 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 19:39:20,144 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 19:39:20,144 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 19:39:20,152 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 19:39:20,152 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 19:39:20,160 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 19:39:20,160 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 19:39:20,167 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 19:39:20,167 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 19:39:20,175 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 19:39:20,175 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 19:39:20,180 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=9
+2025-12-10 19:39:20,188 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 19:39:20,188 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 19:39:20,191 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 19:39:20,198 - __main__ - INFO - ============================================================
+2025-12-10 19:39:20,198 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 19:39:20,198 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 19:39:20,198 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 19:39:20,199 - __main__ - INFO - ============================================================
+2025-12-10 19:39:24,257 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 19:39:24,258 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:39:24,258 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 19:39:24,275 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 19:39:24,301 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 19:39:40,686 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 19:39:40,687 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:39:40,687 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 19:39:40,712 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 19:39:40,741 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 19:39:56,261 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 19:39:56,262 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 19:39:56,263 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 19:39:56,287 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 19:39:56,320 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 19:46:45,738 - __main__ - INFO - 서버 종료 중...

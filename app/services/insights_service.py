@@ -102,7 +102,6 @@ class InsightsService:
         max_diff_feature = None
         max_diff_pct = 0
         diff_direction = ""
-
         for feature in features:
             diff_pct = (cluster_means[feature] - overall_means[feature]) / overall_means[feature] * 100
 
@@ -112,14 +111,14 @@ class InsightsService:
                 max_diff_feature = feature
                 diff_direction = "높은" if diff_pct > 0 else "낮은"
 
-            if abs(diff_pct) > 20:
+            if abs(diff_pct) > 5:
                 if diff_pct > 0:
                     insight['characteristics'].append(
-                        f"높은 {feature} ({diff_pct:.1f}% 평균 이상)"
+                        f"높은 {feature} / 평균 대비 {diff_pct:.1f}% 이상"
                     )
                 else:
                     insight['characteristics'].append(
-                        f"낮은 {feature} ({abs(diff_pct):.1f}% 평균 이하)"
+                        f"낮은 {feature} / 평균 대비 {abs(diff_pct):.1f}% 이하"
                     )
 
         # 클러스터 이름 생성: "주요특징 대표식품명" (괄호 및 단위 제거)
