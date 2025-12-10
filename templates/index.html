@@ -315,7 +315,7 @@
 <body>
     <div class="container">
         <h1>🍹 K-Means 음료 군집화 ☕️</h1>
-        <p class="subtitle">K값을 조정하여 군집을 확인하고 데이터를 입력하여 예측해보세요.</p>
+        <p class="subtitle">K값을 조정하여 군집을 확인하고 데이터를 입력하여 예측해보세요.<br>모든 성분값은 100ml(g)기준입니다.</p>
 
         <div class="controls">
             <div class="control-group">
@@ -377,7 +377,8 @@
     </div>
 
     <script>
-        const API_BASE = 'http://localhost:8030/api/v1';
+        // 현재 페이지의 호스트와 포트를 자동으로 사용
+        const API_BASE = `${window.location.protocol}//${window.location.host}/api/v1`;
         let currentData = null;
         let currentInsightsData = null;
         let debounceTimer = null;

@@ -34,7 +34,7 @@ logging.basicConfig(
 )
 
 # 기본 K값
-DEFAULT_K_VALUES = [2, 3, 4, 5]
+DEFAULT_K_VALUES = [3, 5, 7, 9,11]
 
 # 피쳐 정의
 CAFFEINE_FEATURES = [

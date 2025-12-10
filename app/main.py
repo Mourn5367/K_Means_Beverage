@@ -2,9 +2,15 @@
 FastAPI 메인 애플리케이션
 """
 
+import sys
+from pathlib import Path
+
+# 프로젝트 루트를 Python 경로에 추가
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from contextlib import asynccontextmanager
 from datetime import datetime
@@ -98,9 +104,6 @@ app = FastAPI(
 
 # 템플릿 설정
 templates = Jinja2Templates(directory="templates")
-
-# 정적 파일 설정
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # CORS 설정
 app.add_middleware(

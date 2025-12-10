@@ -2008,3 +2008,774 @@
 2025-12-10 14:38:13,243 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': None, '단백질(g)': None, '당류(g)': None, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 300.0}
 2025-12-10 14:38:13,243 - app.api.routes.prediction - ERROR - 유사 음료 검색 실패: 'SimilarBeveragesRequest' object has no attribute 'auto_fill'
 2025-12-10 14:40:03,774 - app.main - INFO - 서버 종료 중...
+2025-12-10 14:40:07,973 - app.main - INFO - ============================================================
+2025-12-10 14:40:07,973 - app.main - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 14:40:07,973 - app.main - INFO - ============================================================
+2025-12-10 14:40:07,975 - app.main - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 14:40:07,975 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 14:40:07,988 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 14:40:07,989 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 14:40:08,001 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 14:40:08,032 - app.main - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 14:40:08,033 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 14:40:08,033 - app.main - INFO - 3. 서비스 초기화 중...
+2025-12-10 14:40:08,033 - app.main - INFO - 4. API 라우트 설정 중...
+2025-12-10 14:40:08,033 - app.main - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 14:40:08,033 - app.services.model_cache - INFO - 모델 사전 로드 시작: [2, 3, 4, 5]
+2025-12-10 14:40:08,040 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k2.pkl
+2025-12-10 14:40:08,040 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=2
+2025-12-10 14:40:08,052 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 14:40:08,052 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 14:40:08,061 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k4.pkl
+2025-12-10 14:40:08,062 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=4
+2025-12-10 14:40:08,070 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 14:40:08,070 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 14:40:08,080 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k2.pkl
+2025-12-10 14:40:08,080 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=2
+2025-12-10 14:40:08,089 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 14:40:08,089 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 14:40:08,100 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k4.pkl
+2025-12-10 14:40:08,101 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=4
+2025-12-10 14:40:08,107 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 14:40:08,108 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 14:40:08,112 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 14:40:08,120 - app.main - INFO - ============================================================
+2025-12-10 14:40:08,120 - app.main - INFO - 서버 초기화 완료!
+2025-12-10 14:40:08,120 - app.main - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 14:40:08,121 - app.main - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 14:40:08,121 - app.main - INFO - ============================================================
+2025-12-10 14:45:05,685 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 14:45:05,685 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:05,685 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 14:45:05,701 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 14:45:05,733 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:10,060 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:45:10,060 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:45:10,061 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:45:10,061 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': None, '단백질(g)': None, '당류(g)': None, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 300.0}
+2025-12-10 14:45:10,061 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:10,064 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:10,163 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:45:10,163 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:10,164 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:10,168 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:45:24,244 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:45:24,244 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:45:24,245 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:45:24,245 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': None, '단백질(g)': None, '당류(g)': None, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 100.0}
+2025-12-10 14:45:24,245 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:24,246 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:24,246 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:45:24,247 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:24,247 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:24,249 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:45:42,020 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:45:42,020 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:45:42,021 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:45:42,021 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 100.0, '단백질(g)': None, '당류(g)': None, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 100.0}
+2025-12-10 14:45:42,021 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:42,022 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:42,023 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:45:42,023 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:42,023 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:42,025 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:45:47,403 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:45:47,403 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:45:47,404 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:45:47,404 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 2.0, '단백질(g)': None, '당류(g)': None, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 100.0}
+2025-12-10 14:45:47,405 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:47,405 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:47,406 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:45:47,406 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:47,407 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:47,408 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:45:55,444 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:45:55,444 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:45:55,444 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:45:55,444 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 2.0, '단백질(g)': None, '당류(g)': 2.0, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 100.0}
+2025-12-10 14:45:55,445 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:55,445 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:55,446 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:45:55,446 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:55,446 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:55,447 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:45:59,308 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:45:59,308 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:45:59,308 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:45:59,308 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 2.0, '단백질(g)': 2.0, '당류(g)': 2.0, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 100.0}
+2025-12-10 14:45:59,308 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:59,309 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:59,309 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:45:59,310 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:45:59,310 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:45:59,311 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:46:05,040 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:46:05,041 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:46:05,041 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:46:05,041 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 2.0, '단백질(g)': 2.0, '당류(g)': 2.0, '나트륨(mg)': 6.0, '포화지방산(g)': 2.0, '카페인(mg)': 100.0}
+2025-12-10 14:46:05,041 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:05,042 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:05,044 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 2
+2025-12-10 14:46:05,044 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:05,044 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:05,047 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:46:11,515 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:46:11,515 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:46:11,516 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:46:11,516 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 33.0, '단백질(g)': 2.0, '당류(g)': 2.0, '나트륨(mg)': 6.0, '포화지방산(g)': 2.0, '카페인(mg)': 100.0}
+2025-12-10 14:46:11,516 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:11,517 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:11,517 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 2
+2025-12-10 14:46:11,517 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:11,518 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:11,520 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:46:15,035 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:46:15,035 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:46:15,035 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:46:15,036 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 33.0, '단백질(g)': 2.0, '당류(g)': 2.0, '나트륨(mg)': 6.0, '포화지방산(g)': 2.0, '카페인(mg)': 200.0}
+2025-12-10 14:46:15,036 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:15,037 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:15,037 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 2
+2025-12-10 14:46:15,037 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:15,038 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:15,039 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:46:18,764 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:46:18,764 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:46:18,764 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:46:18,765 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 33.0, '단백질(g)': 2.0, '당류(g)': 2.0, '나트륨(mg)': 6.0, '포화지방산(g)': 2.0, '카페인(mg)': 300.0}
+2025-12-10 14:46:18,765 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:18,765 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:18,766 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 2
+2025-12-10 14:46:18,766 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:18,766 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:18,769 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:46:28,147 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:46:28,147 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:46:28,147 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:46:28,148 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 300.0}
+2025-12-10 14:46:28,148 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:28,149 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:28,149 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:46:28,150 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:28,150 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:28,152 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:46:32,048 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 14:46:32,048 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:32,049 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 14:46:32,061 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 14:46:32,117 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:36,212 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:46:36,212 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:46:36,212 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:46:36,213 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': None, '단백질(g)': None, '당류(g)': None, '나트륨(mg)': None, '포화지방산(g)': None, '카페인(mg)': 300.0}
+2025-12-10 14:46:36,213 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:36,214 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:36,214 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:46:36,215 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:36,215 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:36,218 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:46:41,940 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:46:41,940 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:46:41,941 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:46:41,941 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 300.0}
+2025-12-10 14:46:41,941 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:41,942 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:41,942 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:46:41,943 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:46:41,943 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:46:41,944 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:47:41,059 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 14:47:41,060 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:47:41,060 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 14:47:41,085 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 14:47:41,127 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:47:44,972 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:47:44,972 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:47:44,972 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:47:44,973 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 300.0}
+2025-12-10 14:47:44,973 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:47:44,973 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:47:44,974 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 1
+2025-12-10 14:47:44,974 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:47:44,975 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:47:44,976 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:47:53,611 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:47:53,612 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:47:53,612 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:47:53,612 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 50.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 300.0}
+2025-12-10 14:47:53,612 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:47:53,613 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:47:53,613 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 0
+2025-12-10 14:47:53,614 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:47:53,614 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:47:53,616 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:48:01,691 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:48:01,692 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:48:01,692 - app.api.routes.prediction - INFO -   - k: 3
+2025-12-10 14:48:01,692 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 200.0, '단백질(g)': 0.0, '당류(g)': 50.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 300.0}
+2025-12-10 14:48:01,692 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:48:01,693 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:48:01,693 - app.services.prediction_service - INFO - 예측 완료: caffeine k=3 -> cluster 0
+2025-12-10 14:48:01,694 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:48:01,694 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:48:01,695 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:48:55,056 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=10
+2025-12-10 14:48:55,057 - app.services.model_cache - INFO - 캐시 미스: caffeine k=10
+2025-12-10 14:48:55,058 - app.services.clustering_service - INFO - K-means 학습 시작: caffeine k=10
+2025-12-10 14:48:55,064 - app.services.data_preprocessor - INFO - 새 StandardScaler 생성 및 fit 완료
+2025-12-10 14:48:55,068 - app.services.data_preprocessor - INFO - caffeine 데이터 준비 완료:
+2025-12-10 14:48:55,070 - app.services.data_preprocessor - INFO -   - 샘플 수: 1225
+2025-12-10 14:48:55,070 - app.services.data_preprocessor - INFO -   - 피쳐 수: 6
+2025-12-10 14:48:55,503 - app.services.model_cache - INFO - 모델 디스크 저장 완료: data/models\caffeine\kmeans_k10.pkl
+2025-12-10 14:48:55,504 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=10
+2025-12-10 14:48:55,504 - app.services.clustering_service - INFO - K-means 학습 완료: caffeine k=10
+2025-12-10 14:48:55,504 - app.services.clustering_service - INFO -   - 학습 시간: 0.44초
+2025-12-10 14:48:55,504 - app.services.clustering_service - INFO -   - Inertia: 1694.87
+2025-12-10 14:48:55,504 - app.services.clustering_service - INFO -   - Silhouette: 0.2819
+2025-12-10 14:48:55,514 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=10
+2025-12-10 14:48:55,541 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=10
+2025-12-10 14:49:20,427 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=9
+2025-12-10 14:49:20,430 - app.services.model_cache - INFO - 캐시 미스: caffeine k=9
+2025-12-10 14:49:20,431 - app.services.clustering_service - INFO - K-means 학습 시작: caffeine k=9
+2025-12-10 14:49:20,435 - app.services.data_preprocessor - INFO - 새 StandardScaler 생성 및 fit 완료
+2025-12-10 14:49:20,439 - app.services.data_preprocessor - INFO - caffeine 데이터 준비 완료:
+2025-12-10 14:49:20,440 - app.services.data_preprocessor - INFO -   - 샘플 수: 1225
+2025-12-10 14:49:20,441 - app.services.data_preprocessor - INFO -   - 피쳐 수: 6
+2025-12-10 14:49:20,627 - app.services.model_cache - INFO - 모델 디스크 저장 완료: data/models\caffeine\kmeans_k9.pkl
+2025-12-10 14:49:20,627 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=9
+2025-12-10 14:49:20,629 - app.services.clustering_service - INFO - K-means 학습 완료: caffeine k=9
+2025-12-10 14:49:20,629 - app.services.clustering_service - INFO -   - 학습 시간: 0.19초
+2025-12-10 14:49:20,629 - app.services.clustering_service - INFO -   - Inertia: 1774.49
+2025-12-10 14:49:20,629 - app.services.clustering_service - INFO -   - Silhouette: 0.2784
+2025-12-10 14:49:20,643 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=9
+2025-12-10 14:49:20,691 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 14:49:39,440 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 14:49:39,441 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:49:39,441 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 14:49:39,467 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 14:49:39,516 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:49:54,837 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=6
+2025-12-10 14:49:54,899 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k6.pkl
+2025-12-10 14:49:54,900 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=6
+2025-12-10 14:49:54,901 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=6
+2025-12-10 14:49:54,916 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=6
+2025-12-10 14:49:54,945 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=6
+2025-12-10 14:49:55,534 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 14:49:55,535 - app.services.model_cache - INFO - 캐시 미스: caffeine k=7
+2025-12-10 14:49:55,535 - app.services.clustering_service - INFO - K-means 학습 시작: caffeine k=7
+2025-12-10 14:49:55,539 - app.services.data_preprocessor - INFO - 새 StandardScaler 생성 및 fit 완료
+2025-12-10 14:49:55,541 - app.services.data_preprocessor - INFO - caffeine 데이터 준비 완료:
+2025-12-10 14:49:55,542 - app.services.data_preprocessor - INFO -   - 샘플 수: 1225
+2025-12-10 14:49:55,542 - app.services.data_preprocessor - INFO -   - 피쳐 수: 6
+2025-12-10 14:49:55,772 - app.services.model_cache - INFO - 모델 디스크 저장 완료: data/models\caffeine\kmeans_k7.pkl
+2025-12-10 14:49:55,772 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=7
+2025-12-10 14:49:55,772 - app.services.clustering_service - INFO - K-means 학습 완료: caffeine k=7
+2025-12-10 14:49:55,772 - app.services.clustering_service - INFO -   - 학습 시간: 0.21초
+2025-12-10 14:49:55,774 - app.services.clustering_service - INFO -   - Inertia: 2049.03
+2025-12-10 14:49:55,774 - app.services.clustering_service - INFO -   - Silhouette: 0.2945
+2025-12-10 14:49:55,784 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 14:49:55,810 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 14:52:31,262 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 14:52:31,262 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:52:31,263 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 14:52:31,279 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 14:52:31,309 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:52:42,006 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 14:52:42,008 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 14:52:42,009 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 14:52:42,038 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 14:52:42,072 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 14:52:56,558 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=7
+2025-12-10 14:52:56,559 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 14:52:56,559 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=7
+2025-12-10 14:52:56,588 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=7
+2025-12-10 14:52:56,620 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 14:53:19,758 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 14:53:19,759 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 14:53:19,759 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 14:53:19,760 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 100.0}
+2025-12-10 14:53:19,760 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 14:53:19,761 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:53:19,763 - app.services.prediction_service - INFO - 예측 완료: caffeine k=7 -> cluster 4
+2025-12-10 14:53:19,763 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=7
+2025-12-10 14:53:19,764 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 14:53:19,768 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 14:59:40,679 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 14:59:40,680 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 14:59:40,681 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 14:59:40,711 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 14:59:40,740 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:03:26,020 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:03:26,021 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:03:26,021 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:03:26,033 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:03:26,067 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:06:34,738 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:06:34,760 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:06:34,760 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:06:34,773 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:06:34,815 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:08:50,477 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:08:50,478 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:08:50,478 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:08:50,505 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:08:50,532 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:22:24,228 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:22:24,241 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:22:24,241 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:22:24,257 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:22:24,287 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:22:26,250 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=3
+2025-12-10 15:22:26,250 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 15:22:26,251 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=3
+2025-12-10 15:22:26,263 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=3
+2025-12-10 15:22:26,358 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=3
+2025-12-10 15:22:39,509 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=6
+2025-12-10 15:22:39,510 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=6
+2025-12-10 15:22:39,510 - app.services.clustering_service - INFO - K-means 학습 시작: noncaffeine k=6
+2025-12-10 15:22:39,512 - app.services.data_preprocessor - INFO - 새 StandardScaler 생성 및 fit 완료
+2025-12-10 15:22:39,513 - app.services.data_preprocessor - INFO - noncaffeine 데이터 준비 완료:
+2025-12-10 15:22:39,514 - app.services.data_preprocessor - INFO -   - 샘플 수: 653
+2025-12-10 15:22:39,514 - app.services.data_preprocessor - INFO -   - 피쳐 수: 5
+2025-12-10 15:22:39,663 - app.services.model_cache - INFO - 모델 디스크 저장 완료: data/models\noncaffeine\kmeans_k6.pkl
+2025-12-10 15:22:39,663 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=6
+2025-12-10 15:22:39,663 - app.services.clustering_service - INFO - K-means 학습 완료: noncaffeine k=6
+2025-12-10 15:22:39,663 - app.services.clustering_service - INFO -   - 학습 시간: 0.14초
+2025-12-10 15:22:39,665 - app.services.clustering_service - INFO -   - Inertia: 895.66
+2025-12-10 15:22:39,665 - app.services.clustering_service - INFO -   - Silhouette: 0.3341
+2025-12-10 15:22:39,674 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=6
+2025-12-10 15:22:39,696 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=6
+2025-12-10 15:22:40,908 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=7
+2025-12-10 15:22:40,941 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 15:22:40,941 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 15:22:40,942 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=7
+2025-12-10 15:22:40,952 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=7
+2025-12-10 15:22:40,967 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:14,357 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:23:14,357 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:23:14,357 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:23:14,357 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 70.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:23:14,357 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:14,358 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:14,358 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 2
+2025-12-10 15:23:14,359 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:14,359 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:14,361 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:23:33,187 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:23:33,187 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:23:33,188 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:23:33,188 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:23:33,188 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:33,189 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:33,190 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:23:33,190 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:33,190 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:33,192 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:23:37,275 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:23:37,276 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:23:37,276 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:23:37,276 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:23:37,276 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:37,277 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:37,277 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:23:37,278 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:37,278 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:37,280 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:23:45,829 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:23:45,829 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:23:45,829 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:23:45,829 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 3.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:23:45,829 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:45,830 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:45,831 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:23:45,831 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:45,832 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:45,833 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:23:48,094 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:23:48,095 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:23:48,095 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:23:48,095 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 3.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:23:48,095 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:48,096 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:48,097 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:23:48,098 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:48,099 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:48,101 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:23:50,468 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:23:50,469 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:23:50,469 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:23:50,469 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 100.0, '단백질(g)': 3.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:23:50,470 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:50,470 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:50,471 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:23:50,471 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:50,472 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:50,473 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:23:59,686 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:23:59,686 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:23:59,686 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:23:59,686 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 50.0, '단백질(g)': 3.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:23:59,687 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:59,687 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:59,688 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:23:59,688 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:23:59,689 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:23:59,690 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:24:01,940 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:24:01,941 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:24:01,941 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:24:01,941 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 200.0, '단백질(g)': 3.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:24:01,942 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:01,942 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:01,944 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:24:01,944 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:01,944 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:01,947 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:24:06,724 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:24:06,724 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:24:06,725 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:24:06,725 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 300.0, '단백질(g)': 3.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:24:06,725 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:06,726 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:06,726 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:24:06,726 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:06,727 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:06,728 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:24:09,916 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:24:09,917 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:24:09,917 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:24:09,917 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 300.0, '단백질(g)': 0.0, '당류(g)': 90.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:24:09,918 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:09,919 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:09,919 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:24:09,920 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:09,920 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:09,922 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:24:16,564 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:24:16,565 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:24:16,565 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:24:16,565 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 300.0, '단백질(g)': 1.0, '당류(g)': 90.0, '나트륨(mg)': 10.0, '포화지방산(g)': 0.0}
+2025-12-10 15:24:16,566 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:16,566 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:16,567 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:24:16,567 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:16,567 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:16,569 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:24:23,070 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:24:23,071 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:24:23,071 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:24:23,071 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 100.0, '단백질(g)': 1.0, '당류(g)': 90.0, '나트륨(mg)': 10.0, '포화지방산(g)': 0.0}
+2025-12-10 15:24:23,071 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:23,072 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:23,072 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:24:23,074 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:23,074 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:23,076 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:24:27,781 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:24:27,781 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:24:27,782 - app.api.routes.prediction - INFO -   - k: 7
+2025-12-10 15:24:27,782 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 100.0, '단백질(g)': 1.0, '당류(g)': 30.0, '나트륨(mg)': 10.0, '포화지방산(g)': 0.0}
+2025-12-10 15:24:27,782 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:27,783 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:27,784 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=7 -> cluster 6
+2025-12-10 15:24:27,784 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:24:27,784 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:24:27,786 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:24:41,164 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=5
+2025-12-10 15:24:41,164 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:24:41,165 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=5
+2025-12-10 15:24:41,180 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=5
+2025-12-10 15:24:41,202 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:24:52,219 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 15:24:52,220 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:24:52,220 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 15:24:52,229 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 15:24:52,256 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:29:37,236 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:29:37,237 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:29:37,237 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:29:37,247 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:29:37,273 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:30:16,206 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:30:16,207 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:30:16,207 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:30:16,217 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:30:16,247 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:30:17,891 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 15:30:17,891 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:30:17,892 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 15:30:17,917 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 15:30:17,961 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:30:20,308 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 15:30:20,308 - app.services.model_cache - INFO - 캐시 미스: caffeine k=11
+2025-12-10 15:30:20,309 - app.services.clustering_service - INFO - K-means 학습 시작: caffeine k=11
+2025-12-10 15:30:20,311 - app.services.data_preprocessor - INFO - 새 StandardScaler 생성 및 fit 완료
+2025-12-10 15:30:20,312 - app.services.data_preprocessor - INFO - caffeine 데이터 준비 완료:
+2025-12-10 15:30:20,313 - app.services.data_preprocessor - INFO -   - 샘플 수: 1225
+2025-12-10 15:30:20,313 - app.services.data_preprocessor - INFO -   - 피쳐 수: 6
+2025-12-10 15:30:20,519 - app.services.model_cache - INFO - 모델 디스크 저장 완료: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 15:30:20,519 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 15:30:20,520 - app.services.clustering_service - INFO - K-means 학습 완료: caffeine k=11
+2025-12-10 15:30:20,520 - app.services.clustering_service - INFO -   - 학습 시간: 0.19초
+2025-12-10 15:30:20,520 - app.services.clustering_service - INFO -   - Inertia: 1610.17
+2025-12-10 15:30:20,520 - app.services.clustering_service - INFO -   - Silhouette: 0.2688
+2025-12-10 15:30:20,533 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 15:30:20,558 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 15:30:23,586 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:30:23,587 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:30:23,587 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:30:23,610 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:30:23,667 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:30:24,989 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:30:24,990 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:30:24,990 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:30:25,012 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:30:25,043 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:30:25,673 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 15:30:25,674 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:30:25,674 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 15:30:25,695 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 15:30:25,768 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:30:28,740 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 15:30:28,740 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 15:30:28,740 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 15:30:28,752 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 15:30:28,787 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 15:30:29,861 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=9
+2025-12-10 15:30:29,861 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 15:30:29,862 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=9
+2025-12-10 15:30:29,871 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=9
+2025-12-10 15:30:29,906 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=9
+2025-12-10 15:30:31,529 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 15:30:31,530 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 15:30:31,530 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 15:30:31,554 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 15:30:31,578 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 15:41:54,133 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:41:54,134 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:41:54,134 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:41:54,151 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:41:54,174 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:42:01,876 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:42:01,877 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:42:01,877 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:42:01,900 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:42:01,935 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:42:15,100 - app.main - INFO - 서버 종료 중...
+2025-12-10 15:44:15,017 - __main__ - INFO - ============================================================
+2025-12-10 15:44:15,017 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 15:44:15,017 - __main__ - INFO - ============================================================
+2025-12-10 15:44:15,018 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 15:44:15,018 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 15:44:15,045 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 15:44:15,046 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 15:44:15,066 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 15:44:15,094 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 15:44:15,095 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 15:44:15,095 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 15:44:15,095 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 15:44:15,095 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 15:44:15,095 - app.services.model_cache - INFO - 모델 사전 로드 시작: [2, 3, 4, 5]
+2025-12-10 15:44:15,117 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k2.pkl
+2025-12-10 15:44:15,117 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=2
+2025-12-10 15:44:15,135 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 15:44:15,136 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 15:44:15,152 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k4.pkl
+2025-12-10 15:44:15,154 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=4
+2025-12-10 15:44:15,172 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 15:44:15,172 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 15:44:15,188 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k2.pkl
+2025-12-10 15:44:15,188 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=2
+2025-12-10 15:44:15,207 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 15:44:15,207 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 15:44:15,226 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k4.pkl
+2025-12-10 15:44:15,226 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=4
+2025-12-10 15:44:15,244 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 15:44:15,245 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 15:44:15,252 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 15:44:15,261 - __main__ - INFO - ============================================================
+2025-12-10 15:44:15,262 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 15:44:15,262 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 15:44:15,262 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 15:44:15,262 - __main__ - INFO - ============================================================
+2025-12-10 15:44:45,859 - __main__ - INFO - 서버 종료 중...
+2025-12-10 15:44:50,763 - __main__ - INFO - ============================================================
+2025-12-10 15:44:50,764 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 15:44:50,764 - __main__ - INFO - ============================================================
+2025-12-10 15:44:50,764 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 15:44:50,764 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 15:44:50,770 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 15:44:50,770 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 15:44:50,777 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 15:44:50,799 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 15:44:50,799 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 15:44:50,799 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 15:44:50,799 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 15:44:50,800 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 15:44:50,800 - app.services.model_cache - INFO - 모델 사전 로드 시작: [2, 3, 4, 5]
+2025-12-10 15:44:50,805 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k2.pkl
+2025-12-10 15:44:50,805 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=2
+2025-12-10 15:44:50,815 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 15:44:50,815 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 15:44:50,823 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k4.pkl
+2025-12-10 15:44:50,823 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=4
+2025-12-10 15:44:50,832 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 15:44:50,832 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 15:44:50,839 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k2.pkl
+2025-12-10 15:44:50,839 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=2
+2025-12-10 15:44:50,847 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 15:44:50,847 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 15:44:50,854 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k4.pkl
+2025-12-10 15:44:50,854 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=4
+2025-12-10 15:44:50,861 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 15:44:50,861 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 15:44:50,865 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 15:44:50,872 - __main__ - INFO - ============================================================
+2025-12-10 15:44:50,872 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 15:44:50,872 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 15:44:50,873 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 15:44:50,873 - __main__ - INFO - ============================================================
+2025-12-10 15:46:48,088 - __main__ - INFO - 서버 종료 중...
+2025-12-10 15:46:53,017 - __main__ - INFO - ============================================================
+2025-12-10 15:46:53,018 - __main__ - INFO - K-Means 음료 군집화 API v1.0.0 시작
+2025-12-10 15:46:53,018 - __main__ - INFO - ============================================================
+2025-12-10 15:46:53,018 - __main__ - INFO - 1. 데이터 전처리 서비스 초기화 중...
+2025-12-10 15:46:53,018 - app.services.data_preprocessor - INFO - 카페인 음료 데이터 로드 중: data/processed\caffeine_beverages.csv
+2025-12-10 15:46:53,030 - app.services.data_preprocessor - INFO - 카페인 음료 로드 완료: 1225개
+2025-12-10 15:46:53,031 - app.services.data_preprocessor - INFO - 논카페인 음료 데이터 로드 중: data/processed\noncaffeine_beverages.csv
+2025-12-10 15:46:53,036 - app.services.data_preprocessor - INFO - 논카페인 음료 로드 완료: 653개
+2025-12-10 15:46:53,061 - __main__ - INFO - 2. 모델 캐시 초기화 중...
+2025-12-10 15:46:53,061 - app.services.model_cache - INFO - ModelCache 초기화 완료 (max_models=10)
+2025-12-10 15:46:53,062 - __main__ - INFO - 3. 서비스 초기화 중...
+2025-12-10 15:46:53,062 - __main__ - INFO - 4. API 라우트 설정 중...
+2025-12-10 15:46:53,062 - __main__ - INFO - 5. 사전 학습된 모델 로드 중...
+2025-12-10 15:46:53,062 - app.services.model_cache - INFO - 모델 사전 로드 시작: [2, 3, 4, 5]
+2025-12-10 15:46:53,069 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k2.pkl
+2025-12-10 15:46:53,069 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=2
+2025-12-10 15:46:53,079 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k3.pkl
+2025-12-10 15:46:53,080 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=3
+2025-12-10 15:46:53,088 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k4.pkl
+2025-12-10 15:46:53,088 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=4
+2025-12-10 15:46:53,097 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k5.pkl
+2025-12-10 15:46:53,097 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=5
+2025-12-10 15:46:53,104 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k2.pkl
+2025-12-10 15:46:53,106 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=2
+2025-12-10 15:46:53,112 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k3.pkl
+2025-12-10 15:46:53,113 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=3
+2025-12-10 15:46:53,120 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k4.pkl
+2025-12-10 15:46:53,120 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=4
+2025-12-10 15:46:53,128 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k5.pkl
+2025-12-10 15:46:53,128 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=5
+2025-12-10 15:46:53,132 - app.services.model_cache - INFO - 모델 사전 로드 완료
+2025-12-10 15:46:53,139 - __main__ - INFO - ============================================================
+2025-12-10 15:46:53,139 - __main__ - INFO - 서버 초기화 완료!
+2025-12-10 15:46:53,139 - __main__ - INFO - API 문서: http://localhost:8000/docs
+2025-12-10 15:46:53,139 - __main__ - INFO - 대체 문서: http://localhost:8000/redoc
+2025-12-10 15:46:53,140 - __main__ - INFO - ============================================================
+2025-12-10 15:47:01,914 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:47:01,915 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:47:01,915 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:47:01,945 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:47:01,976 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:49:36,177 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:49:36,177 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:49:36,178 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:49:36,194 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:49:36,240 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:49:40,124 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=11
+2025-12-10 15:49:40,159 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\caffeine\kmeans_k11.pkl
+2025-12-10 15:49:40,159 - app.services.model_cache - INFO - 메모리 캐시 추가: caffeine k=11
+2025-12-10 15:49:40,160 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=11
+2025-12-10 15:49:40,177 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=11
+2025-12-10 15:49:40,221 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=11
+2025-12-10 15:49:44,335 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=11
+2025-12-10 15:49:44,335 - app.services.model_cache - INFO - 캐시 미스: noncaffeine k=11
+2025-12-10 15:49:44,336 - app.services.clustering_service - INFO - K-means 학습 시작: noncaffeine k=11
+2025-12-10 15:49:44,338 - app.services.data_preprocessor - INFO - 새 StandardScaler 생성 및 fit 완료
+2025-12-10 15:49:44,339 - app.services.data_preprocessor - INFO - noncaffeine 데이터 준비 완료:
+2025-12-10 15:49:44,339 - app.services.data_preprocessor - INFO -   - 샘플 수: 653
+2025-12-10 15:49:44,340 - app.services.data_preprocessor - INFO -   - 피쳐 수: 5
+2025-12-10 15:49:44,649 - app.services.model_cache - INFO - 모델 디스크 저장 완료: data/models\noncaffeine\kmeans_k11.pkl
+2025-12-10 15:49:44,650 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=11
+2025-12-10 15:49:44,650 - app.services.clustering_service - INFO - K-means 학습 완료: noncaffeine k=11
+2025-12-10 15:49:44,650 - app.services.clustering_service - INFO -   - 학습 시간: 0.30초
+2025-12-10 15:49:44,650 - app.services.clustering_service - INFO -   - Inertia: 591.28
+2025-12-10 15:49:44,651 - app.services.clustering_service - INFO -   - Silhouette: 0.3480
+2025-12-10 15:49:44,657 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=11
+2025-12-10 15:49:44,676 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=11
+2025-12-10 15:49:53,109 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=7
+2025-12-10 15:49:53,132 - app.services.model_cache - INFO - 디스크에서 모델 로드: data/models\noncaffeine\kmeans_k7.pkl
+2025-12-10 15:49:53,133 - app.services.model_cache - INFO - 메모리 캐시 추가: noncaffeine k=7
+2025-12-10 15:49:53,133 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=7
+2025-12-10 15:49:53,143 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=7
+2025-12-10 15:49:53,187 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=7
+2025-12-10 15:49:55,056 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=5
+2025-12-10 15:49:55,057 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:49:55,057 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=5
+2025-12-10 15:49:55,062 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=5
+2025-12-10 15:49:55,081 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:06,651 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:50:06,652 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:50:06,652 - app.api.routes.prediction - INFO -   - k: 5
+2025-12-10 15:50:06,652 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:50:06,652 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:06,653 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:50:06,742 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=5 -> cluster 2
+2025-12-10 15:50:06,742 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:06,742 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:50:06,743 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:50:22,048 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:50:22,049 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:50:22,049 - app.api.routes.prediction - INFO -   - k: 5
+2025-12-10 15:50:22,049 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 1.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:50:22,050 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:22,051 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:50:22,052 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=5 -> cluster 2
+2025-12-10 15:50:22,052 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:22,053 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:50:22,055 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:50:31,547 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:50:31,548 - app.api.routes.prediction - INFO -   - beverage_type: noncaffeine
+2025-12-10 15:50:31,548 - app.api.routes.prediction - INFO -   - k: 5
+2025-12-10 15:50:31,548 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 1.0, '단백질(g)': 10.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0}
+2025-12-10 15:50:31,549 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:31,549 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:50:31,550 - app.services.prediction_service - INFO - 예측 완료: noncaffeine k=5 -> cluster 1
+2025-12-10 15:50:31,550 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:31,551 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:50:31,552 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:50:53,569 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 15:50:53,569 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:50:53,569 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 15:50:53,585 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 15:50:53,615 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:50:57,080 - app.api.routes.clustering - INFO - 군집화 요청: noncaffeine k=5
+2025-12-10 15:50:57,080 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:57,080 - app.services.clustering_service - INFO - 캐시된 모델 사용: noncaffeine k=5
+2025-12-10 15:50:57,089 - app.api.routes.clustering - INFO - 군집화 완료: noncaffeine k=5
+2025-12-10 15:50:57,175 - app.services.model_cache - INFO - 메모리 캐시 히트: noncaffeine k=5
+2025-12-10 15:50:58,495 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=5
+2025-12-10 15:50:58,496 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:50:58,497 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=5
+2025-12-10 15:50:58,509 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=5
+2025-12-10 15:50:58,541 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:51:38,660 - app.api.routes.prediction - INFO - [유사 음료 검색 요청]
+2025-12-10 15:51:38,662 - app.api.routes.prediction - INFO -   - beverage_type: caffeine
+2025-12-10 15:51:38,662 - app.api.routes.prediction - INFO -   - k: 5
+2025-12-10 15:51:38,662 - app.api.routes.prediction - INFO -   - features: {'에너지(kcal)': 0.0, '단백질(g)': 0.0, '당류(g)': 0.0, '나트륨(mg)': 0.0, '포화지방산(g)': 0.0, '카페인(mg)': 50.0}
+2025-12-10 15:51:38,663 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:51:38,664 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:51:38,664 - app.services.prediction_service - INFO - 예측 완료: caffeine k=5 -> cluster 1
+2025-12-10 15:51:38,665 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=5
+2025-12-10 15:51:38,665 - app.services.data_preprocessor - INFO - 기존 StandardScaler로 transform 완료
+2025-12-10 15:51:38,667 - app.services.prediction_service - INFO - 유사 음료 검색 완료: 5개 발견
+2025-12-10 15:52:27,747 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:52:27,747 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:52:27,748 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:52:27,760 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:52:27,791 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:53:09,166 - app.api.routes.clustering - INFO - 군집화 요청: caffeine k=3
+2025-12-10 15:53:09,167 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3
+2025-12-10 15:53:09,167 - app.services.clustering_service - INFO - 캐시된 모델 사용: caffeine k=3
+2025-12-10 15:53:09,177 - app.api.routes.clustering - INFO - 군집화 완료: caffeine k=3
+2025-12-10 15:53:09,208 - app.services.model_cache - INFO - 메모리 캐시 히트: caffeine k=3

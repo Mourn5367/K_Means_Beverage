@@ -101,12 +101,10 @@ K_Means_3/
 │   ├── processed/           # 전처리된 데이터 (CSV)
 │   └── models/              # 학습된 모델 (joblib)
 ├── scripts/
-│   ├── preprocess_data.py   # 데이터 전처리 스크립트
-│   └── train_initial_models.py  # 초기 모델 학습 스크립트
+│   └── preprocess_data.py   # 데이터 전처리 스크립트
 ├── templates/
 │   └── index.html           # 웹 인터페이스
-├── requirements.txt         # Python 패키지 의존성
-└── run.py                   # 애플리케이션 실행 스크립트
+└── requirements.txt         # Python 패키지 의존성
 ```
 
 ## 설치 및 실행
@@ -135,29 +133,18 @@ pip install -r requirements.txt
 python scripts/preprocess_data.py
 ```
 
-### 3. 초기 모델 학습
-
-```bash
-# 기본 K 값(2, 3, 4, 5)에 대한 모델 학습
-python scripts/train_initial_models.py
-```
-
-### 4. 서버 실행
+### 3. 서버 실행
 
 ```bash
 # FastAPI 서버 시작
-python run.py
-```
-
-또는
-
-```bash
-uvicorn app.main:app --reload
+python app/main.py
 ```
 
 서버가 시작되면 브라우저에서 `http://localhost:8000`으로 접속합니다.
 
-### 5. API 문서 확인
+모델은 가벼워서 첫 요청 시 자동으로 학습되므로 별도의 사전 학습이 필요하지 않습니다.
+
+### 4. API 문서 확인
 
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
