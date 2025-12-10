@@ -342,3 +342,32 @@ curl -X POST "http://localhost:8000/api/prediction/similar" \
 ### 서버 실행 오류
 - 포트 8000이 이미 사용 중인 경우: `--port` 옵션으로 다른 포트 지정
 - 의존성 패키지 설치 확인: `pip install -r requirements.txt`
+
+
+## 시연
+
+### 시연 이미지
+
+
+#### 메인 화면
+![메인 화면](https://velog.velcdn.com/images/mourn5367/post/db80e684-e9db-4de2-8999-ebcc75f018b2/image.png)
+
+#### 음료 타입 변경
+![음료 타입 변경](https://velog.velcdn.com/images/mourn5367/post/e3931b50-581c-49d9-95a1-70c0a6d1d010/image.png)
+
+#### K 값 변경
+![K 값 변경](https://velog.velcdn.com/images/mourn5367/post/2908ea66-59f8-4a96-bb40-4b4544cc5767/image.png)
+
+#### 군집 정보 - 1
+![군집 정보 - 1](https://velog.velcdn.com/images/mourn5367/post/10a6b6f6-87fc-48b7-bd10-06c0702b32b5/image.png)
+
+#### 군집 정보 - 2
+![군집 정보 - 2](https://velog.velcdn.com/images/mourn5367/post/98d14d62-f081-48e9-b4b7-35b5ca8937eb/image.png)
+
+#### 새 음료 군집 예측
+![새 음료 군집 예측](https://velog.velcdn.com/images/mourn5367/post/4ae738c9-bda3-4efb-9bb6-5de5bd09bc0a/image.png)
+
+
+### 시연 영상
+
+[![프로젝트 시연 영상](https://i9.ytimg.com/vi_webp/CwXFU-wyZ98/mq2.webp?sqp=CIiq5ckG-oaymwEmCMACELQB8quKqQMa8AEB-AHmBYAC0AWKAgwIABABGEMgQShyMA8=&rs=AOn4CLBkxjXBYrA_6CA3buTg-uCNCOz3ng)](https://youtu.be/CwXFU-wyZ98)
