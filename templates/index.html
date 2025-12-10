@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Means 음료 군집화</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        select, input[type="range"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border: none;
+            border-radius: 4px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .k-value-display {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 600px;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .cluster-info {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .cluster-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .cluster-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .input-section h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .input-group input {
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn-predict {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-predict:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .prediction-result {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .prediction-result.show {
+            display: block;
+        }
+
+        .similar-beverages {
+            margin-top: 10px;
+        }
+
+        .beverage-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .beverage-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .beverage-details {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        /* 모달 스크롤바 숨기기 */
+        div[style*="overflow-y: auto"]::-webkit-scrollbar {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .insights-detail {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .feature-table {
+            width: 100%;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .feature-table td {
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature-table td:first-child {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .representative-list {
+            margin-top: 10px;
+        }
+
+        .rep-item {
+            padding: 5px 0;
+            font-size: 0.85em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍹 K-Means 음료 군집화 ☕️</h1>
+        <p class="subtitle">K값을 조정하여 군집을 확인하고 데이터를 입력하여 예측해보세요.</p>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="beverageType">음료 타입</label>
+                <select id="beverageType" onchange="autoCluster()">
+                    <option value="caffeine">카페인 음료 (1,225개)</option>
+                    <option value="noncaffeine">논카페인 음료 (710개)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="kValue">K 값 (군집 수)</label>
+                <input type="range" id="kValue" min="3" max="11" value="3" step="2" oninput="updateKValue()">
+                <div class="k-value-display">K = <span id="kValueDisplay">3</span></div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <div>분석 중...</div>
+        </div>
+
+        <div class="main-content">
+            <div class="chart-container">
+                <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.9em; color: #666;">X축:</label>
+                        <select id="xAxisSelect" onchange="updateScatterPlot()" style="width: 100%; padding: 5px; border: 2px solid #ddd; border-radius: 5px;">
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="font-size: 0.9em; color: #666;">Y축:</label>
+                        <select id="yAxisSelect" onchange="updateScatterPlot()" style="width: 100%; padding: 5px; border: 2px solid #ddd; border-radius: 5px;">
+                        </select>
+                    </div>
+                </div>
+                <div id="scatterPlot"></div>
+            </div>
+
+            <div class="sidebar">
+                <h3>군집 정보</h3>
+                <div id="clusterInfo"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <h3>🔍 유사 음료 찾기</h3>
+            <p style="color: #666; margin-bottom: 15px;">
+                영양소 값을 입력하여 유사한 음료를 찾아보세요<br>
+                <small style="color: #999;">💡 일부만 입력해도 됩니다. 입력하지 않은 값은 0으로 처리됩니다.</small>
+            </p>
+
+            <div class="feature-inputs" id="featureInputs"></div>
+
+            <button class="btn-predict" onclick="predictSimilar()">유사 음료 찾기</button>
+
+            <div class="prediction-result" id="predictionResult"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8030/api/v1';
+        let currentData = null;
+        let currentInsightsData = null;
+        let debounceTimer = null;
+        let previousXAxisIdx = 0;
+        let previousYAxisIdx = 1;
+
+        // K값 업데이트 및 자동 군집화
+        function updateKValue() {
+            const k = document.getElementById('kValue').value;
+            document.getElementById('kValueDisplay').textContent = k;
+
+            // 디바운스: 슬라이더 조정 후 500ms 대기
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(autoCluster, 500);
+        }
+
+        // 자동 군집화
+        async function autoCluster() {
+            const beverageType = document.getElementById('beverageType').value;
+            const k = parseInt(document.getElementById('kValue').value);
+
+            setLoading(true);
+
+            try {
+                const response = await fetch(`${API_BASE}/cluster`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        beverage_type: beverageType,
+                        k: k,
+                        force_retrain: false
+                    })
+                });
+
+                if (!response.ok) throw new Error('군집화 실패');
+
+                const data = await response.json();
+                currentData = data;
+
+                // 인사이트 가져오기
+                const insightsResponse = await fetch(`${API_BASE}/insights/${beverageType}/${k}`);
+                const insightsData = await insightsResponse.json();
+                currentInsightsData = insightsData;
+
+                // 축 선택 옵션 설정
+                setupAxisSelectors(data.features_used);
+
+                displayScatterPlot(data, insightsData);
+                displayClusterInfo(insightsData);
+                setupFeatureInputs(data.beverage_type);
+
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // 축 선택 옵션 설정
+        function setupAxisSelectors(features) {
+            const xSelect = document.getElementById('xAxisSelect');
+            const ySelect = document.getElementById('yAxisSelect');
+
+            xSelect.innerHTML = features.map((f, i) =>
+                `<option value="${i}" ${i === 0 ? 'selected' : ''}>${f}</option>`
+            ).join('');
+
+            ySelect.innerHTML = features.map((f, i) =>
+                `<option value="${i}" ${i === 1 ? 'selected' : ''}>${f}</option>`
+            ).join('');
+
+            // 초기 값 저장
+            previousXAxisIdx = 0;
+            previousYAxisIdx = 1;
+        }
+
+        // 산점도 업데이트 (축 변경 시)
+        function updateScatterPlot() {
+            const xAxisIdx = parseInt(document.getElementById('xAxisSelect').value);
+            const yAxisIdx = parseInt(document.getElementById('yAxisSelect').value);
+
+            // X축과 Y축이 같으면 경고하고 이전 값으로 되돌림
+            if (xAxisIdx === yAxisIdx) {
+                alert('X축과 Y축은 서로 다른 값이어야 합니다.');
+                // 이전 값으로 되돌리기
+                document.getElementById('xAxisSelect').value = previousXAxisIdx;
+                document.getElementById('yAxisSelect').value = previousYAxisIdx;
+                return;
+            }
+
+            // 현재 값을 이전 값으로 저장
+            previousXAxisIdx = xAxisIdx;
+            previousYAxisIdx = yAxisIdx;
+
+            if (currentData && currentInsightsData) {
+                displayScatterPlot(currentData, currentInsightsData);
+            }
+        }
+
+        // 산점도 표시 (Plotly)
+        async function displayScatterPlot(clusterData, insightsData) {
+            const beverageType = clusterData.beverage_type;
+            const k = clusterData.k;
+            const features = clusterData.features_used;
+            const dataPoints = clusterData.data_points || [];
+
+            // 선택된 축 가져오기
+            const xAxisIdx = parseInt(document.getElementById('xAxisSelect').value) || 0;
+            const yAxisIdx = parseInt(document.getElementById('yAxisSelect').value) || 1;
+
+            // X축과 Y축이 같으면 차트를 그리지 않음
+            if (xAxisIdx === yAxisIdx) {
+                alert('X축과 Y축은 서로 다른 값이어야 합니다.');
+                return;
+            }
+
+            // 각 군집별 데이터 준비
+            const traces = [];
+            const colors = ['#667eea', '#f093fb', '#4facfe', '#43e97b', '#fa709a', '#fee140', '#30cfd0', '#a8edea', '#ff6b6b', '#c471ed'];
+
+            for (let i = 0; i < k; i++) {
+                // 해당 클러스터의 데이터 포인트 필터링
+                const clusterPoints = dataPoints.filter(p => p.cluster === i);
+
+                // 선택된 피쳐를 x, y 좌표로 사용
+                const x = clusterPoints.map(p => p[features[xAxisIdx]]);
+                const y = clusterPoints.map(p => p[features[yAxisIdx]]);
+
+                // hover 텍스트에 영양 성분 포함
+                const text = clusterPoints.map(p => {
+                    let info = `<b>${p.식품명}</b><br>`;
+                    info += `분류: ${p.대표식품명}<br>`;
+                    info += `제조사: ${p.업체명}<br>`;
+                    info += `<br><b>[영양 성분]</b><br>`;
+                    features.forEach(f => {
+                        info += `${f}: ${p[f] !== undefined ? p[f].toFixed(1) : 'N/A'}<br>`;
+                    });
+                    return info;
+                });
+
+                // 클러스터 이름 사용
+                const clusterName = insightsData.clusters[i].name;
+
+                traces.push({
+                    x: x,
+                    y: y,
+                    mode: 'markers',
+                    type: 'scatter',
+                    name: clusterName,
+                    text: text,
+                    hoverinfo: 'text',
+                    marker: {
+                        size: 8,
+                        color: colors[i],
+                        opacity: 0.6,
+                        line: {
+                            color: 'white',
+                            width: 1
+                        }
+                    },
+                    customdata: Array(clusterPoints.length).fill(i)
+                });
+            }
+
+            const layout = {
+                title: `${beverageType === 'caffeine' ? '카페인' : '논카페인'} 음료 군집 분석 (K=${k})`,
+                xaxis: { title: features[xAxisIdx] },
+                yaxis: { title: features[yAxisIdx] },
+                hovermode: 'closest',
+                showlegend: true,
+                height: 550
+            };
+
+            const config = {
+                responsive: true,
+                displayModeBar: true
+            };
+
+            Plotly.newPlot('scatterPlot', traces, layout, config);
+
+            // 클릭 이벤트
+            document.getElementById('scatterPlot').on('plotly_click', function(data) {
+                const clusterId = data.points[0].customdata;
+                showClusterDetail(insightsData.clusters[clusterId], beverageType);
+            });
+        }
+
+        // 군집 정보 표시
+        function displayClusterInfo(insightsData) {
+            const beverageType = insightsData.beverage_type;
+            const html = insightsData.clusters.map(cluster => `
+                <div class="cluster-info" onclick="showClusterDetail(${JSON.stringify(cluster).replace(/"/g, '&quot;')}, '${beverageType}')">
+                    <div class="cluster-title">${cluster.name}</div>
+                    <div class="cluster-stat">
+                        <span>크기</span>
+                        <strong>${cluster.size}개 (${cluster.percentage.toFixed(1)}%)</strong>
+                    </div>
+                    <div class="cluster-stat">
+                        <span>대표 식품</span>
+                        <strong>${cluster.representative_types[0]?.name || 'N/A'}</strong>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('clusterInfo').innerHTML = html;
+        }
+
+        // 군집 상세 정보 모달
+        function showClusterDetail(cluster, beverageType) {
+            const beverageTypeText = beverageType === 'caffeine' ? '카페인 음료' : '논카페인 음료';
+            const characteristics = cluster.characteristics.map(c => `<li>${c}</li>`).join('');
+            const representatives = cluster.representative_types.slice(0, 5).map(r =>
+                `<div class="rep-item">▪ ${r.name}: ${r.count}개 (${r.percentage.toFixed(1)}%)</div>`
+            ).join('');
+
+            const samples = cluster.sample_beverages.slice(0, 5).map(s => {
+                let nutritionInfo = '';
+                if (s.features) {
+                    nutritionInfo = '<br><small style="color: #888;">';
+                    Object.entries(s.features).forEach(([key, value]) => {
+                        nutritionInfo += `${key}: ${value.toFixed(1)} | `;
+                    });
+                    nutritionInfo = nutritionInfo.slice(0, -3) + '</small>';
+                }
+                return `<div class="beverage-item">
+                    <div class="beverage-name">${s.식품명}</div>
+                    <div class="beverage-details">${s.업체명} | ${s.대표식품명}${nutritionInfo}</div>
+                </div>`;
+            }).join('');
+
+            // 영양 성분별 분포 차트 ID 생성
+            const modalId = 'modal_' + Date.now();
+            const featureCharts = Object.keys(cluster.feature_statistics).map((feature, idx) =>
+                `<div id="${modalId}_chart_${idx}" style="width: 100%; height: 120px; margin: 10px 0;"></div>`
+            ).join('');
+
+            const modal = `
+                <div id="${modalId}" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center;" onclick="this.remove()">
+                    <div style="background: white; border-radius: 15px; padding: 30px; max-width: 800px; max-height: 85vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;" onclick="event.stopPropagation()">
+                        <h2 style="margin-bottom: 20px;">${cluster.name}</h2>
+                        <p style="color: #666; margin-bottom: 15px;">${beverageTypeText} 중 ${cluster.size}개 (${cluster.percentage.toFixed(1)}%)</p>
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">영양 성분 분포</h3>
+
+                        <!-- 범례 -->
+                        <div style="display: flex; gap: 20px; margin-bottom: 15px; padding: 10px; background: #f8f9fa; border-radius: 8px; font-size: 0.9em;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <div style="width: 30px; height: 3px; background: rgba(150, 150, 150, 0.8);"></div>
+                                <span>전체 음료 분포</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <div style="width: 30px; height: 3px; background: #667eea; border-top: 3px dashed #667eea;"></div>
+                                <span style="color: #667eea; font-weight: 600;">이 군집 평균</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <div style="width: 30px; height: 3px; background: #ff6b6b; border-top: 3px dotted #ff6b6b;"></div>
+                                <span style="color: #ff6b6b;">전체 평균</span>
+                            </div>
+                        </div>
+
+                        ${featureCharts}
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">주요 특징</h3>
+                        <ul style="padding-left: 20px; color: #555;">${characteristics}</ul>
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">대표 식품명</h3>
+                        ${representatives}
+
+                        <h3 style="margin-top: 20px; margin-bottom: 10px;">대표 음료</h3>
+                        ${samples}
+
+                        <button onclick="this.closest('div[style*=fixed]').remove()" style="margin-top: 20px; width: 100%; padding: 10px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer;">닫기</button>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', modal);
+
+            // 차트 그리기
+            drawFeatureDistributions(cluster, modalId);
+        }
+
+        // 영양 성분 분포 차트 그리기sudo rm -rf /usr/local/lib/node_modules/@anthropic-ai/claude-code
+        async function drawFeatureDistributions(cluster, modalId) {
+            const features = Object.keys(cluster.feature_statistics);
+
+            for (let idx = 0; idx < features.length; idx++) {
+                const feature = features[idx];
+                const stats = cluster.feature_statistics[feature];
+                const clusterMean = stats.mean;
+
+                // 전체 데이터의 통계 가져오기 (currentInsightsData.global_statistics 사용)
+                const globalStats = currentInsightsData.global_statistics.feature_ranges[feature];
+                const globalMin = globalStats.min;
+                const globalMax = globalStats.max;
+                const globalMean = globalStats.mean;
+
+                // 정규분포 곡선 생성
+                const x = [];
+                const y = [];
+                const range = globalMax - globalMin;
+                const std = range / 6; // 대략적인 표준편차
+
+                for (let i = 0; i <= 100; i++) {
+                    const value = globalMin + (range * i / 100);
+                    x.push(value);
+                    // 간단한 정규분포 근사
+                    const z = (value - globalMean) / std;
+                    const density = Math.exp(-0.5 * z * z) / (std * Math.sqrt(2 * Math.PI));
+                    y.push(density);
+                }
+
+                // 전체 분포 트레이스
+                const distributionTrace = {
+                    x: x,
+                    y: y,
+                    type: 'scatter',
+                    mode: 'lines',
+                    fill: 'tozeroy',
+                    fillcolor: 'rgba(200, 200, 200, 0.3)',
+                    line: { color: 'rgba(150, 150, 150, 0.8)', width: 2 },
+                    name: '전체 음료 분포',
+                    hoverinfo: 'skip',
+                    showlegend: false
+                };
+
+                // 클러스터 평균 위치 표시
+                const clusterTrace = {
+                    x: [clusterMean, clusterMean],
+                    y: [0, Math.max(...y)],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { color: '#667eea', width: 3, dash: 'dash' },
+                    name: '이 군집 평균',
+                    hoverinfo: 'text',
+                    hovertext: `군집 평균: ${clusterMean.toFixed(1)}<br>전체 평균: ${globalMean.toFixed(1)}`,
+                    showlegend: false
+                };
+
+                // 전체 평균 위치 표시
+                const globalMeanTrace = {
+                    x: [globalMean, globalMean],
+                    y: [0, Math.max(...y)],
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { color: '#ff6b6b', width: 2, dash: 'dot' },
+                    name: '전체 평균',
+                    hoverinfo: 'skip',
+                    showlegend: false
+                };
+
+                const layout = {
+                    title: {
+                        text: feature.split('(')[0], // 단위 제거
+                        font: { size: 14, weight: 600 }
+                    },
+                    xaxis: {
+                        title: '',
+                        showgrid: false,
+                        fixedrange: true  // 줌/팬 비활성화
+                    },
+                    yaxis: {
+                        title: '',
+                        showticklabels: false,
+                        showgrid: false,
+                        fixedrange: true  // 줌/팬 비활성화
+                    },
+                    showlegend: false,
+                    margin: { l: 40, r: 20, t: 40, b: 30 },
+                    height: 120,
+                    hovermode: 'closest'
+                };
+
+                const config = {
+                    displayModeBar: false,
+                    responsive: true,
+                    staticPlot: false,  // 호버는 가능하도록
+                    scrollZoom: false,
+                    doubleClick: false,
+                    editable: false
+                };
+
+                Plotly.newPlot(`${modalId}_chart_${idx}`, [distributionTrace, clusterTrace, globalMeanTrace], layout, config);
+            }
+        }
+
+        // 피쳐 입력 필드 설정
+        function setupFeatureInputs(beverageType) {
+            const features = beverageType === 'caffeine'
+                ? ['에너지(kcal)', '단백질(g)', '당류(g)', '나트륨(mg)', '포화지방산(g)', '카페인(mg)']
+                : ['에너지(kcal)', '단백질(g)', '당류(g)', '나트륨(mg)', '포화지방산(g)'];
+
+            const html = features.map(f => `
+                <div class="input-group">
+                    <label>${f} <small style="color: #999;">(선택)</small></label>
+                    <input type="number" id="input_${f}" placeholder="비워두면 0 사용" step="0.1">
+                </div>
+            `).join('');
+
+            document.getElementById('featureInputs').innerHTML = html;
+        }
+
+        // 유사 음료 예측
+        async function predictSimilar() {
+            const beverageType = document.getElementById('beverageType').value;
+            const k = parseInt(document.getElementById('kValue').value);
+
+            const features = beverageType === 'caffeine'
+                ? ['에너지(kcal)', '단백질(g)', '당류(g)', '나트륨(mg)', '포화지방산(g)', '카페인(mg)']
+                : ['에너지(kcal)', '단백질(g)', '당류(g)', '나트륨(mg)', '포화지방산(g)'];
+
+            const featuresDict = {};
+            features.forEach(f => {
+                const value = document.getElementById(`input_${f}`).value;
+                // 빈 문자열이면 0, 그 외에는 입력된 숫자 사용
+                featuresDict[f] = value === '' ? 0 : parseFloat(value);
+            });
+
+            setLoading(true);
+
+            try {
+                const response = await fetch(`${API_BASE}/predict/similar`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        beverage_type: beverageType,
+                        k: k,
+                        features: featuresDict,
+                        n_neighbors: 5,
+                        search_scope: 'predicted_cluster'
+                    })
+                });
+
+                if (!response.ok) throw new Error('예측 실패');
+
+                const data = await response.json();
+                displayPredictionResult(data);
+
+            } catch (error) {
+                alert('예측 중 오류 발생: ' + error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        // 예측 결과 표시
+        function displayPredictionResult(data) {
+            const similarHtml = data.similar_beverages.map(b => {
+                let nutritionInfo = '<br><small style="color: #888;">';
+                Object.entries(b.features).forEach(([key, value]) => {
+                    nutritionInfo += `${key}: ${value.toFixed(1)} | `;
+                });
+                nutritionInfo = nutritionInfo.slice(0, -3) + '</small>';
+
+                return `<div class="beverage-item">
+                    <div class="beverage-name">${b.rank}. ${b.beverage_name}</div>
+                    <div class="beverage-details">
+                        ${b.company} | ${b.food_type} | 유사도: ${(b.similarity_score * 100).toFixed(1)}%
+                        ${nutritionInfo}
+                    </div>
+                </div>`;
+            }).join('');
+
+            // 클러스터 이름 가져오기
+            let clusterName = `Cluster ${data.predicted_cluster}`;
+            if (currentInsightsData && currentInsightsData.clusters[data.predicted_cluster]) {
+                clusterName = currentInsightsData.clusters[data.predicted_cluster].name;
+            }
+
+            const html = `
+                <h4 style="margin-bottom: 10px;">예측 군집: ${clusterName}</h4>
+                <p style="color: #666; font-size: 0.9em; margin-bottom: 10px;">
+                    ${data.search_summary.total_searched}개 음료 중 유사한 음료 ${data.similar_beverages.length}개
+                </p>
+                <div class="similar-beverages">${similarHtml}</div>
+            `;
+
+            const resultDiv = document.getElementById('predictionResult');
+            resultDiv.innerHTML = html;
+            resultDiv.classList.add('show');
+        }
+
+        // 로딩 표시
+        function setLoading(show) {
+            document.getElementById('loading').classList.toggle('show', show);
+        }
+
+        // 페이지 로드 시 자동 실행
+        window.addEventListener('load', () => {
+            setTimeout(autoCluster, 500);
+        });
+    </script>
+</body>
+</html>
