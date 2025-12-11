@@ -370,4 +370,4 @@ curl -X POST "http://localhost:8000/api/prediction/similar" \
 
 ### 시연 영상
 
-[![프로젝트 시연 영상](https://i9.ytimg.com/vi_webp/CwXFU-wyZ98/mq2.webp?sqp=CIiq5ckG-oaymwEmCMACELQB8quKqQMa8AEB-AHmBYAC0AWKAgwIABABGEMgQShyMA8=&rs=AOn4CLBkxjXBYrA_6CA3buTg-uCNCOz3ng)](https://youtu.be/CwXFU-wyZ98)
+[![프로젝트 시연 영상](https://img.youtube.com/vi/CwXFU-wyZ98/0.jpg)](https://youtu.be/CwXFU-wyZ98)
