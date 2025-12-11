@@ -358,6 +358,9 @@ curl -X POST "http://localhost:8000/api/prediction/similar" \
 #### K 값 변경
 ![K 값 변경](https://velog.velcdn.com/images/mourn5367/post/2908ea66-59f8-4a96-bb40-4b4544cc5767/image.png)
 
+#### 차트 중복 축 선택
+![차트 중복 축 선택](https://velog.velcdn.com/images/mourn5367/post/7d104948-5b90-4209-bc76-d39b400a8ca9/image.png)
+
 #### 군집 정보 - 1
 ![군집 정보 - 1](https://velog.velcdn.com/images/mourn5367/post/10a6b6f6-87fc-48b7-bd10-06c0702b32b5/image.png)
 
